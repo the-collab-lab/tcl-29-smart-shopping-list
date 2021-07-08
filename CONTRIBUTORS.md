@@ -10,5 +10,6 @@ Add yourself as a contributor to this project as a Markdown link that links your
 
 - [Luka Baramishvili](https://github.com/lukabaramishvili) 🇬🇪
 - [Chiamaka Umeh](https://github.com/Amaka202) 🇳🇬
+- [Kevin Falting](https://github.com/kevinfalting) 🇺🇸
 
 ## Code of Conduct Contacts
