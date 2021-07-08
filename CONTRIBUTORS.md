@@ -6,6 +6,8 @@ Add yourself as a contributor to this project as a Markdown link that links your
 
 ## Cohort Participants
 
+- [Claire Yspol](https://github.com/blackbureau) 🍉
+
 ## Mentors
 
 - [Luka Baramishvili](https://github.com/lukabaramishvili) 🇬🇪
