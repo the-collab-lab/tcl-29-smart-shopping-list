@@ -13,3 +13,4 @@ Add yourself as a contributor to this project as a Markdown link that links your
 - [Kevin Falting](https://github.com/kevinfalting) 🇺🇸
 
 ## Code of Conduct Contacts
+- Michelle Sauque
