@@ -8,6 +8,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 
 - [Claire Yspol](https://github.com/blackbureau) 🍉
 - [Nadinda Rachmat](https://github.com/nadinda) 🐯
+- [Abigail Nottingham](https://github.com/sponberry) 🤓
 
 ## Mentors
 
@@ -17,4 +18,5 @@ Add yourself as a contributor to this project as a Markdown link that links your
 - [Bela Sinoimeri](https://github.com/bsinoimeri) 🇩🇪
 
 ## Code of Conduct Contacts
+
 - Michelle Sauque
