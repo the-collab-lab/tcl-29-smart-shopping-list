@@ -9,6 +9,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 - [Claire Yspol](https://github.com/blackbureau) 🍉
 - [Nadinda Rachmat](https://github.com/nadinda) 🐯
 - [Abigail Nottingham](https://github.com/sponberry) 🤓
+- [Zachee Ishimwe](https://github.com/ishimwezachee) ✌️
 
 ## Mentors
 
