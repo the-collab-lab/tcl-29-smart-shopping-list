@@ -11,6 +11,8 @@ Add yourself as a contributor to this project as a Markdown link that links your
 - [Abigail Nottingham](https://github.com/sponberry) 🤓
 - [Zachee Ishimwe](https://github.com/ishimwezachee) ✌️
 
+- Git learning module (Presented by Luka)
+
 ## Mentors
 
 - [Luka Baramishvili](https://github.com/lukabaramishvili) 🇬🇪
