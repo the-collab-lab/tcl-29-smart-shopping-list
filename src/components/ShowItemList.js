@@ -1,11 +1,8 @@
 import React from 'react';
-
+import { useCollection } from 'react-firebase-hooks/firestore';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import { useCollection } from 'react-firebase-hooks/firestore';
-
 import '../lib/firebase';
-//const db = fb.firestore()
 
 function ShowItemList() {
   const [value, loading, error] = useCollection(
@@ -14,9 +11,18 @@ function ShowItemList() {
 
   return (
     <div>
-      {error && <p>"Error"</p>}
-      {loading && <p>"Loading.."</p>}
-      {value && <p>"value"</p>}
+      {error && <p>Error</p>}
+      {loading && <p>Loading..</p>}
+      {value && (
+        <span>
+          Collection:
+          <ul>
+            {value.docs.map((doc) => (
+              <li key={doc.id}>{JSON.stringify(doc.data())}</li>
+            ))}
+          </ul>
+        </span>
+      )}
     </div>
   );
 }

@@ -1,10 +1,17 @@
 import React from 'react';
-//import firebase from 'firebase/app';
+import firebase from 'firebase/app';
 
 function CreateItem() {
+  const handleClick = async () => {
+    await firebase.firestore().collection('items').add({
+      name: 'A test product',
+      date: Date.now(),
+    });
+  };
+
   return (
     <div>
-      <button>Create item</button>
+      <button onClick={() => handleClick()}>Create item</button>
     </div>
   );
 }
