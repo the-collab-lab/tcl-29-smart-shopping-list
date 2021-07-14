@@ -1,0 +1,13 @@
+.listView {
+  position: absolute;
+  bottom: 0;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.list a {
+  font-weight: bold;
+}

@@ -1,0 +1,10 @@
+.home {
+  position: absolute;
+  bottom: 0;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}

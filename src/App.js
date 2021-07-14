@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ListView from './components/ListView';
+import AddView from './components/AddView';
+import Home from './components/Home';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+// https://www.newline.co/@andreeamaco/how-to-handle-navigation-in-your-app-with-react-router-link--088f82d3
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/list-view">
+          <ListView />
+        </Route>
+        <Route exact path="/add-view">
+          <AddView />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
