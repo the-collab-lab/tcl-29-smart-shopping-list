@@ -4,7 +4,7 @@ import '../styles/listView.css';
 
 const ListView = () => {
   return (
-    <div className="listView">
+    <div className="list-View">
       <ul>
         <li className="list">
           <Link to="/list-view">List View</Link>

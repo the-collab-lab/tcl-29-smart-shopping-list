@@ -4,7 +4,7 @@ import '../styles/addView.css';
 
 const AddView = () => {
   return (
-    <div className="addview">
+    <div className="add-view">
       <ul>
         <li>
           <Link to="/list-view">List View</Link>

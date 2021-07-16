@@ -11,14 +11,14 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
         <Route exact path="/list-view">
           <ListView />
         </Route>
         <Route exact path="/add-view">
           <AddView />
+        </Route>
+        <Route exact path="/">
+          <Home />
         </Route>
       </Switch>
     </Router>
