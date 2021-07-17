@@ -5,8 +5,6 @@ import AddView from './components/AddView';
 import Home from './components/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-// https://www.newline.co/@andreeamaco/how-to-handle-navigation-in-your-app-with-react-router-link--088f82d3
-
 function App() {
   return (
     <Router>
