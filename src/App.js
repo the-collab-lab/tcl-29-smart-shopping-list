@@ -3,23 +3,44 @@ import './App.css';
 import ListView from './components/ListView';
 import AddView from './components/AddView';
 import Home from './components/Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from 'react-router-dom';
 
 const App = () => {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/list-view">
-          <ListView />
-        </Route>
-        <Route exact path="/add-view">
-          <AddView />
-        </Route>
-        <Route exact path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="App">
+      <Router>
+        <div>
+          <ul>
+            <li>
+              <NavLink to="/list-view" activeStyle={{ fontWeight: 'bold' }}>
+                ListView
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/add-view" activeStyle={{ fontWeight: 'bold' }}>
+                AddView
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+        <Switch>
+          <Route path="/list-view">
+            <ListView />
+          </Route>
+          <Route path="/add-view">
+            <AddView />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 };
 

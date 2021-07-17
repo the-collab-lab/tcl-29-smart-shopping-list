@@ -1,20 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/listView.css';
 
 const ListView = () => {
-  return (
-    <div className="list-View">
-      <ul>
-        <li className="list">
-          <Link to="/list-view">List View</Link>
-        </li>
-        <li>
-          <Link to="/add-view">Add View</Link>
-        </li>
-      </ul>
-    </div>
-  );
+  return <h1>ListView</h1>;
 };
 
 export default ListView;
