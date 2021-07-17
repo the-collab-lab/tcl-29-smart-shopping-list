@@ -9,10 +9,10 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/list-view">
+        <Route path="/list-view">
           <ListView />
         </Route>
-        <Route exact path="/add-view">
+        <Route path="/add-view">
           <AddView />
         </Route>
         <Route exact path="/">
