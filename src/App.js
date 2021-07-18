@@ -1,13 +1,13 @@
 import React from 'react';
 import CreateItem from './components/CreateItem';
-import ShowItemList from './components/ShowItemList';
+import ShowList from './components/ShowList';
 
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <ShowItemList />
+      <ShowList />
       <CreateItem />
     </div>
   );

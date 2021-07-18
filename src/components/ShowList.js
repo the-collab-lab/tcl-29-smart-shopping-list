@@ -4,9 +4,9 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import '../lib/firebase';
 
-function ShowItemList() {
+function ShowList() {
   const [value, loading, error] = useCollection(
-    firebase.firestore().collection('items'),
+    firebase.firestore().collection('items').orderBy('date'),
   );
 
   return (
@@ -14,17 +14,17 @@ function ShowItemList() {
       {error && <p>Error</p>}
       {loading && <p>Loading..</p>}
       {value && (
-        <span>
+        <div>
           Collection:
           <ul>
             {value.docs.map((doc) => (
               <li key={doc.id}>{JSON.stringify(doc.data())}</li>
             ))}
           </ul>
-        </span>
+        </div>
       )}
     </div>
   );
 }
 
-export default ShowItemList;
+export default ShowList;

@@ -5,7 +5,7 @@ function CreateItem() {
   const handleClick = async () => {
     await firebase.firestore().collection('items').add({
       name: 'A test product',
-      date: Date.now(),
+      date: Date().toLocaleString(),
     });
   };
 
