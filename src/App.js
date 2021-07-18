@@ -2,8 +2,6 @@ import React from 'react';
 import CreateItem from './components/CreateItem';
 import ShowList from './components/ShowList';
 import './App.css';
-import ListView from './components/ListView';
-import AddView from './components/AddView';
 import Home from './components/Home';
 import {
   BrowserRouter as Router,
@@ -32,18 +30,18 @@ const App = () => {
         </div>
         <Switch>
           <Route path="/list-view">
-            <ListView />
+            <ShowList />
           </Route>
           <Route path="/add-view">
-            <AddView />
+            <CreateItem />
           </Route>
           <Route path="/">
             <Home />
           </Route>
         </Switch>
       </Router>
-      <ShowList />
-      <CreateItem />
+      {/* <ShowList />
+      <CreateItem /> */}
     </div>
   );
 };
