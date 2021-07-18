@@ -1,4 +1,6 @@
 import React from 'react';
+import CreateItem from './components/CreateItem';
+import ShowList from './components/ShowList';
 import './App.css';
 import ListView from './components/ListView';
 import AddView from './components/AddView';
@@ -40,6 +42,8 @@ const App = () => {
           </Route>
         </Switch>
       </Router>
+      <ShowList />
+      <CreateItem />
     </div>
   );
 };
