@@ -1,12 +1,10 @@
 import React from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import '../lib/firebase';
+import db from '../lib/firebase';
 
 function ShowList() {
   const [value, loading, error] = useCollection(
-    firebase.firestore().collection('items').orderBy('date'),
+    db.collection('items').orderBy('date'),
   );
 
   return (

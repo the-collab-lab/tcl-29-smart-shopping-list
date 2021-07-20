@@ -1,9 +1,9 @@
 import React from 'react';
-import firebase from 'firebase/app';
+import db from '../lib/firebase';
 
 function CreateItem() {
   const handleClick = async () => {
-    await firebase.firestore().collection('items').add({
+    await db.collection('items').add({
       name: 'A test product',
       date: Date().toLocaleString(),
     });
