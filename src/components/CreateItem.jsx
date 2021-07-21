@@ -11,9 +11,8 @@ function CreateItem() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // localStorage.setItem('token', 'a tester token');
     const token = localStorage.getItem('token');
-    console.log(token);
+
     await db.collection('items').add({
       name: item.itemName,
       frequency: item.frequency,
@@ -30,16 +29,7 @@ function CreateItem() {
       ...item,
       [name]: value,
     });
-
-    console.log(item);
   };
-
-  // constg handleClick = async () => {
-  //   await db.collection('items').add({
-  //     name: 'A test product',
-  //     date: Date().toLocaleString(),
-  //   });
-  // };
 
   return (
     <div>
