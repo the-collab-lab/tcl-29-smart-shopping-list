@@ -17,8 +17,9 @@ function CreateItem() {
     await db.collection('items').add({
       name: item.itemName,
       frequency: item.frequency,
-      lastPurchaseDate: null,
+      lastPurchasedDate: null,
       date: Date().toLocaleString(),
+      token,
     });
     setItem(itemObj);
   };
@@ -45,7 +46,7 @@ function CreateItem() {
       <h1>AddView</h1>
 
       <form onSubmit={handleSubmit}>
-        <label HTMLfor="item-name">Item name:</label>
+        <label htmlFor="item-name">Item name:</label>
         <input
           type="text"
           id="item-name"
@@ -64,7 +65,7 @@ function CreateItem() {
               onChange={handleChange}
               checked={item.frequency === '7'}
             />
-            <label HTMLfor="soon">Soon</label>
+            <label htmlFor="soon">Soon</label>
           </div>
 
           <div>
@@ -76,7 +77,7 @@ function CreateItem() {
               onChange={handleChange}
               checked={item.frequency === '14'}
             />
-            <label HTMLfor="kind-of-soon">Kind of soon</label>
+            <label htmlFor="kind-of-soon">Kind of soon</label>
           </div>
 
           <div>
@@ -88,7 +89,7 @@ function CreateItem() {
               onChange={handleChange}
               checked={item.frequency === '30'}
             />
-            <label HTMLfor="not-soon">Not soon</label>
+            <label htmlFor="not-soon">Not soon</label>
           </div>
         </fieldset>
 

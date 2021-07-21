@@ -17,7 +17,7 @@ function ShowList() {
           Collection:
           <ul>
             {value.docs.map((doc) => (
-              <li key={doc.id}>{JSON.stringify(doc.data())}</li>
+              <li key={doc.id}>{doc.data().name}</li>
             ))}
           </ul>
         </div>
