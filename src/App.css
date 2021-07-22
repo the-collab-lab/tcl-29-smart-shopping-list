@@ -1,6 +1,10 @@
-.App {
+/* .App {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+} */
+
+form {
+  margin-left: 10px;
 }
