@@ -9,11 +9,11 @@ function CreateItem() {
   };
   const [item, setItem] = useState(itemObj);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
 
-    await db.collection(token).add({
+    db.collection(token).add({
       name: item.itemName,
       frequency: item.frequency,
       lastPurchasedDate: null,
