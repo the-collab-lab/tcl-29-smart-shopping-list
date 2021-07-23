@@ -11,8 +11,6 @@ const Home = () => {
     const token = getToken();
     localStorage.setItem('token', token);
     history.push('/list-view');
-
-    console.log(token);
   };
 
   const existingToken = localStorage.getItem('token');
