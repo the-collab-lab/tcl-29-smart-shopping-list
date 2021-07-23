@@ -16,27 +16,12 @@ const Home = () => {
     console.log(token);
   };
 
-  // function fetchToken() {
-  //   localStorage.getItem('token');
-  //   history.push('/list-view');
-  // }
-
   const existingToken = localStorage.getItem('token');
 
   return (
     <div>
       <button onClick={Token}>Create a new list</button>
       {existingToken ? <Redirect from="/" to="/list-view" /> : ''}
-      {
-        {
-          /* <input> below will be used at a later date  */
-        }
-        /* <input
-        placeholder="three work token"
-        for="inputToken"
-        onChange={fetchToken}
-      ></input> */
-      }
     </div>
   );
 };
