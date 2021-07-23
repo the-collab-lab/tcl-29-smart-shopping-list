@@ -7,7 +7,7 @@ const Home = () => {
 
   let history = useHistory();
 
-  const Token = function generateToken() {
+  const generateToken = () => {
     const token = getToken();
     localStorage.setItem('token', token);
     history.push('/list-view');
@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <div>
-      <button onClick={Token}>Create a new list</button>
+      <button onClick={generateToken}>Create a new list</button>
       {existingToken ? <Redirect from="/" to="/list-view" /> : ''}
     </div>
   );
