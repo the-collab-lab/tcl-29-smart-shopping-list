@@ -1,7 +1,6 @@
 import React from 'react';
 import getToken from '../lib/tokens';
-import { Redirect } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 const Home = () => {
   // const [hasToken, setHasToken] = useState(false);
