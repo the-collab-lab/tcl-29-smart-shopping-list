@@ -3,8 +3,9 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import db from '../lib/firebase';
 
 function ShowList() {
+  const token = localStorage.getItem('token');
   const [value, loading, error] = useCollection(
-    db.collection('items').orderBy('date'),
+    db.collection(token).orderBy('date'),
   );
 
   return (

@@ -13,12 +13,11 @@ function CreateItem() {
     e.preventDefault();
     const token = localStorage.getItem('token');
 
-    await db.collection('items').add({
+    await db.collection(token).add({
       name: item.itemName,
       frequency: item.frequency,
       lastPurchasedDate: null,
       date: Date().toLocaleString(),
-      token,
     });
     setItem(itemObj);
   };
