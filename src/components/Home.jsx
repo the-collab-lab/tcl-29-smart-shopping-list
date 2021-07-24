@@ -1,10 +1,8 @@
 import React from 'react';
 import getToken from '../lib/tokens';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Home = () => {
-  // const [hasToken, setHasToken] = useState(false);
-
   let history = useHistory();
 
   const generateToken = () => {
@@ -13,12 +11,9 @@ const Home = () => {
     history.push('/list-view');
   };
 
-  const existingToken = localStorage.getItem('token');
-
   return (
     <div>
       <button onClick={generateToken}>Create a new list</button>
-      {existingToken ? <Redirect from="/" to="/list-view" /> : ''}
     </div>
   );
 };

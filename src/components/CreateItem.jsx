@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import db from '../lib/firebase';
 import './createItem.css';
+import Navigation from './Navigation';
 
 function CreateItem() {
   const itemObj = {
@@ -85,6 +86,7 @@ function CreateItem() {
 
         <button type="submit">Add item</button>
       </form>
+      <Navigation />
     </div>
   );
 }
