@@ -12,12 +12,14 @@ function CreateItem() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
+    console.log(token);
 
-    db.collection(token).add({
+    db.collection('items').add({
       name: item.itemName,
       frequency: item.frequency,
       lastPurchasedDate: null,
       date: Date().toLocaleString(),
+      token,
     });
     setItem(itemObj);
   };

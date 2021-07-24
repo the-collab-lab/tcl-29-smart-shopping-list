@@ -5,7 +5,7 @@ import db from '../lib/firebase';
 function ShowList() {
   const token = localStorage.getItem('token');
   const [value, loading, error] = useCollection(
-    db.collection(token).orderBy('date'),
+    db.collection('items').where('token', '==', token),
   );
 
   return (
