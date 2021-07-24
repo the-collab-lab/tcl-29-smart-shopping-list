@@ -5,7 +5,7 @@ import './createItem.css';
 function CreateItem() {
   const itemObj = {
     itemName: '',
-    frequency: 7,
+    frequency: '7',
   };
   const [item, setItem] = useState(itemObj);
 
