@@ -12,7 +12,6 @@ function CreateItem() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    console.log(token);
 
     db.collection('items').add({
       name: item.itemName,
