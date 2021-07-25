@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import db from '../lib/firebase';
+import Navigation from './Navigation';
 
 function ShowList() {
   const token = localStorage.getItem('token');
@@ -23,6 +24,8 @@ function ShowList() {
           </ul>
         </div>
       )}
+
+      <Navigation />
     </div>
   );
 }
