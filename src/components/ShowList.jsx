@@ -1,12 +1,11 @@
 import React from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import '../lib/firebase';
+import db from '../lib/firebase';
 
 function ShowList() {
+  const token = localStorage.getItem('token');
   const [value, loading, error] = useCollection(
-    firebase.firestore().collection('items').orderBy('date'),
+    db.collection('items').where('token', '==', token),
   );
 
   return (
@@ -19,7 +18,7 @@ function ShowList() {
           Collection:
           <ul>
             {value.docs.map((doc) => (
-              <li key={doc.id}>{JSON.stringify(doc.data())}</li>
+              <li key={doc.id}>{doc.data().name}</li>
             ))}
           </ul>
         </div>

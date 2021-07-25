@@ -1,33 +1,15 @@
 import React from 'react';
 import CreateItem from './components/CreateItem';
 import ShowList from './components/ShowList';
-import './App.css';
 import Home from './components/Home';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from 'react-router-dom';
+import Navigation from './components/Navigation';
+import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const App = () => {
   return (
     <div className="App">
       <Router>
-        <div>
-          <ul>
-            <li>
-              <NavLink to="/list-view" activeStyle={{ fontWeight: 'bold' }}>
-                ListView
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/add-view" activeStyle={{ fontWeight: 'bold' }}>
-                AddView
-              </NavLink>
-            </li>
-          </ul>
-        </div>
         <Switch>
           <Route path="/list-view">
             <ShowList />
@@ -39,9 +21,8 @@ const App = () => {
             <Home />
           </Route>
         </Switch>
+        <Navigation />
       </Router>
-      {/* <ShowList />
-      <CreateItem /> */}
     </div>
   );
 };
