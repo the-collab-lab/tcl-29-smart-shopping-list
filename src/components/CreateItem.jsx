@@ -6,15 +6,15 @@ import Navigation from './Navigation';
 function CreateItem() {
   const itemObj = {
     itemName: '',
-    frequency: 7,
+    frequency: '7',
   };
   const [item, setItem] = useState(itemObj);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
 
-    await db.collection('items').add({
+    db.collection('items').add({
       name: item.itemName,
       frequency: item.frequency,
       lastPurchasedDate: null,

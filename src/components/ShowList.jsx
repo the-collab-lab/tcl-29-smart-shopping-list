@@ -4,8 +4,9 @@ import db from '../lib/firebase';
 import Navigation from './Navigation';
 
 function ShowList() {
+  const token = localStorage.getItem('token');
   const [value, loading, error] = useCollection(
-    db.collection('items').orderBy('date'),
+    db.collection('items').where('token', '==', token),
   );
 
   return (
