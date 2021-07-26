@@ -1,0 +1,21 @@
+.home {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.shareToken {
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.inputBox {
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.submitButton {
+  display: block;
+  margin: 0 auto;
+}
