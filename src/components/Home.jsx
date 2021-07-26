@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import getToken from '../lib/tokens';
 import { useHistory } from 'react-router-dom';
+import db from '../lib/firebase';
+import firebase from 'firebase/app';
 
 import './Home.css';
 
@@ -11,6 +13,13 @@ const Home = () => {
   const generateToken = () => {
     const token = getToken();
     localStorage.setItem('token', token);
+
+    db.collection('tokens')
+      .doc('tokenDocument')
+      .update({
+        tokenArray: firebase.firestore.FieldValue.arrayUnion(token),
+      });
+
     history.push('/list-view');
   };
 
