@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import db from '../lib/firebase';
+import { useCollection } from 'react-firebase-hooks/firestore';
 import './createItem.css';
 import Navigation from './Navigation';
 
@@ -9,19 +10,37 @@ function CreateItem() {
     frequency: '7',
   };
   const [item, setItem] = useState(itemObj);
+  const token = localStorage.getItem('token');
+
+  const [value, loading, error] = useCollection(
+    db.collection('items').where('token', '==', token),
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
 
-    db.collection('items').add({
-      name: item.itemName,
-      frequency: item.frequency,
-      lastPurchasedDate: null,
-      date: Date().toLocaleString(),
-      token,
-    });
-    setItem(itemObj);
+    const findDuplicateItem = (item) => {
+      let existingItem = false;
+      value.docs.map((doc) => {
+        if (doc.data().name === item.itemName) {
+          existingItem = true;
+        }
+      });
+      return existingItem;
+    };
+
+    const duplicatedItem = findDuplicateItem(item);
+
+    if (!duplicatedItem) {
+      db.collection('items').add({
+        name: item.itemName,
+        frequency: item.frequency,
+        lastPurchasedDate: null,
+        date: Date().toLocaleString(),
+        token,
+      });
+      setItem(itemObj);
+    } else alert('The item already exist');
   };
 
   const handleChange = (e) => {
