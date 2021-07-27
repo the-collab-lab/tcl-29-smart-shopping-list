@@ -23,6 +23,29 @@ const Home = () => {
     history.push('/list-view');
   };
 
+  const compareToken = (e) => {
+    e.preventDefault();
+    console.log(tokenName);
+
+    db.collection('tokens')
+      .where('tokenArray', 'array-contains', tokenName)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          console.log('document id:', doc.id);
+          console.log('exists: ', doc.exists);
+        });
+        const tokenInDB = querySnapshot;
+        console.log(tokenInDB);
+      });
+
+    // if (tokenName === tokenInDB) {
+    //   history.push('/list-view');
+    // } else {
+    //   console.log('error');
+    // }
+  };
+
   return (
     <div class="home">
       <h1>Welcome to your Smart Shopping list!</h1>
@@ -30,7 +53,7 @@ const Home = () => {
       <p> - or - </p>
       <p>Join an existing shopping list by entering a three word token.</p>
 
-      <form>
+      <form onSubmit={compareToken}>
         <label htmlFor="inputToken" className="shareToken">
           Share token
         </label>
@@ -44,6 +67,9 @@ const Home = () => {
         <button type="submit" className="submitButton">
           Join an existing list
         </button>
+
+        {/* show new token to user */}
+        <p>{tokenName}</p>
       </form>
     </div>
   );
