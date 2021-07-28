@@ -19,6 +19,13 @@ const Home = () => {
       .doc('tokenDocument')
       .update({
         tokenArray: firebase.firestore.FieldValue.arrayUnion(token),
+      })
+      .catch((error) => {
+        db.collection('tokens')
+          .doc('tokenDocument')
+          .set({
+            tokenArray: [token],
+          });
       });
 
     history.push('/list-view');
