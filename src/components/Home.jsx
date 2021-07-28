@@ -83,7 +83,7 @@ const Home = () => {
         </label>
         <input
           className="inputBox"
-          placeholder="three work token"
+          placeholder="three word token"
           id="inputToken"
           value={tokenName}
           onChange={(e) => setTokenName(e.target.value)}
