@@ -9,6 +9,7 @@ import './Home.css';
 const Home = () => {
   let history = useHistory();
   const [tokenName, setTokenName] = useState('');
+  const [notification, setNotification] = useState(null);
 
   const generateToken = () => {
     const token = getToken();
@@ -23,6 +24,12 @@ const Home = () => {
     history.push('/list-view');
   };
 
+  const resetError = () => {
+    setTimeout(() => {
+      setNotification(null);
+    }, 10000);
+  };
+
   const compareToken = (e) => {
     e.preventDefault();
     console.log(tokenName);
@@ -33,8 +40,6 @@ const Home = () => {
       .then((querySnapshot) => {
         let tokenInDB;
         querySnapshot.forEach((doc) => {
-          // console.log('document id:', doc.id);
-          // console.log('exists: ', doc.exists);
           tokenInDB = doc.exists;
         });
         console.log(tokenInDB);
@@ -42,8 +47,17 @@ const Home = () => {
           localStorage.setItem('token', tokenName);
           history.push('/list-view');
         } else {
-          console.log('error');
+          setNotification(
+            'Token not found - please check spelling and try again or create new list',
+          );
         }
+        resetError();
+      })
+      .catch((error) => {
+        setNotification(
+          'An unexpected error occurred, please refresh the page and try again',
+        );
+        resetError();
       });
   };
 
@@ -57,6 +71,10 @@ const Home = () => {
       <form onSubmit={compareToken}>
         <label htmlFor="inputToken" className="shareToken">
           Share token
+          <br />
+          {notification ? (
+            <div className="errorMessage">{notification}</div>
+          ) : null}
         </label>
         <input
           className="inputBox"

@@ -19,3 +19,11 @@
   display: block;
   margin: 0 auto;
 }
+
+.errorMessage {
+  color: red;
+  border: 1px solid red;
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px;
+}
