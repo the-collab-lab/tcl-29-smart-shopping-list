@@ -12,17 +12,25 @@ function CreateItem() {
   const [item, setItem] = useState(itemObj);
   const token = localStorage.getItem('token');
 
-  const [value, loading, error] = useCollection(
+  const [value] = useCollection(
     db.collection('items').where('token', '==', token),
   );
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const cleanUserInput = (itemName) => {
+      return itemName.replace(/[\W_]+/g, '').toLowerCase();
+    };
+
     const findDuplicateItem = (item) => {
       let existingItem = false;
-      value.docs.map((doc) => {
-        if (doc.data().name === item.itemName) {
+
+      value.docs.forEach((doc) => {
+        const nameFromDb = doc.data().name;
+        const nameFromUser = item.itemName;
+
+        if (cleanUserInput(nameFromDb) === cleanUserInput(nameFromUser)) {
           existingItem = true;
         }
       });
