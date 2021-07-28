@@ -32,7 +32,6 @@ const Home = () => {
 
   const compareToken = (e) => {
     e.preventDefault();
-    console.log(tokenName);
 
     db.collection('tokens')
       .where('tokenArray', 'array-contains', tokenName)
@@ -42,7 +41,6 @@ const Home = () => {
         querySnapshot.forEach((doc) => {
           tokenInDB = doc.exists;
         });
-        console.log(tokenInDB);
         if (tokenInDB) {
           localStorage.setItem('token', tokenName);
           history.push('/list-view');
@@ -90,7 +88,5 @@ const Home = () => {
     </div>
   );
 };
-
-/*  */
 
 export default Home;
