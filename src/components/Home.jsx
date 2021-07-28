@@ -31,19 +31,20 @@ const Home = () => {
       .where('tokenArray', 'array-contains', tokenName)
       .get()
       .then((querySnapshot) => {
+        let tokenInDB;
         querySnapshot.forEach((doc) => {
-          console.log('document id:', doc.id);
-          console.log('exists: ', doc.exists);
+          // console.log('document id:', doc.id);
+          // console.log('exists: ', doc.exists);
+          tokenInDB = doc.exists;
         });
-        const tokenInDB = querySnapshot;
         console.log(tokenInDB);
+        if (tokenInDB) {
+          localStorage.setItem('token', tokenName);
+          history.push('/list-view');
+        } else {
+          console.log('error');
+        }
       });
-
-    // if (tokenName === tokenInDB) {
-    //   history.push('/list-view');
-    // } else {
-    //   console.log('error');
-    // }
   };
 
   return (
@@ -67,9 +68,6 @@ const Home = () => {
         <button type="submit" className="submitButton">
           Join an existing list
         </button>
-
-        {/* show new token to user */}
-        <p>{tokenName}</p>
       </form>
     </div>
   );
