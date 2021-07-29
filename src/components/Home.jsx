@@ -67,7 +67,7 @@ const Home = () => {
   };
 
   return (
-    <div class="home">
+    <div className="home">
       <h1>Welcome to your Smart Shopping list!</h1>
       <button onClick={generateToken}>Create a new list</button>
       <p> - or - </p>
