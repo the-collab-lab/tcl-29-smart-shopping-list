@@ -17,15 +17,27 @@ const Home = () => {
 
     db.collection('tokens')
       .doc('tokenDocument')
-      .update({
-        tokenArray: firebase.firestore.FieldValue.arrayUnion(token),
-      })
-      .catch((error) => {
-        db.collection('tokens')
-          .doc('tokenDocument')
-          .set({
-            tokenArray: [token],
-          });
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          db.collection('tokens')
+            .doc('tokenDocument')
+            .update({
+              tokenArray: firebase.firestore.FieldValue.arrayUnion(token),
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          db.collection('tokens')
+            .doc('tokenDocument')
+            .set({
+              tokenArray: [token],
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
       });
 
     history.push('/list-view');
