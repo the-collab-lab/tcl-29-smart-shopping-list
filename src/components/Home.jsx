@@ -74,21 +74,21 @@ const Home = () => {
       <p>Join an existing shopping list by entering a three word token.</p>
 
       <form onSubmit={compareToken}>
-        <label htmlFor="inputToken" className="shareToken">
+        <label htmlFor="inputToken" className="share-token">
           Share token
           <br />
           {notification ? (
-            <div className="errorMessage">{notification}</div>
+            <div className="error-message">{notification}</div>
           ) : null}
         </label>
         <input
-          className="inputBox"
+          className="input-box"
           placeholder="three word token"
           id="inputToken"
           value={tokenName}
           onChange={(e) => setTokenName(e.target.value)}
         />
-        <button type="submit" className="submitButton">
+        <button type="submit" className="submit-button">
           Join an existing list
         </button>
       </form>
