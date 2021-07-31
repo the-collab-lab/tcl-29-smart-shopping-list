@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import db from '../lib/firebase';
+import { useCollection } from 'react-firebase-hooks/firestore';
 import './createItem.css';
 import Navigation from './Navigation';
 
@@ -9,19 +10,47 @@ function CreateItem() {
     frequency: '7',
   };
   const [item, setItem] = useState(itemObj);
+  const [notifiction, setNotification] = useState(false);
+  const token = localStorage.getItem('token');
+
+  const [value] = useCollection(
+    db.collection('items').where('token', '==', token),
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
 
-    db.collection('items').add({
-      name: item.itemName,
-      frequency: item.frequency,
-      lastPurchasedDate: null,
-      date: Date().toLocaleString(),
-      token,
-    });
-    setItem(itemObj);
+    const cleanUserInput = (itemName) => {
+      return itemName.replace(/[\W_]+/g, '').toLowerCase();
+    };
+
+    const findDuplicateItem = (item) => {
+      let existingItem = false;
+
+      value.docs.forEach((doc) => {
+        const nameFromDb = doc.data().name;
+        const nameFromUser = item.itemName;
+
+        if (cleanUserInput(nameFromDb) === cleanUserInput(nameFromUser)) {
+          existingItem = true;
+        }
+      });
+      return existingItem;
+    };
+
+    let duplicatedItem = findDuplicateItem(item);
+
+    if (!duplicatedItem) {
+      db.collection('items').add({
+        name: item.itemName,
+        frequency: item.frequency,
+        lastPurchasedDate: null,
+        date: Date().toLocaleString(),
+        token,
+      });
+      setItem(itemObj);
+    }
+    setNotification(duplicatedItem);
   };
 
   const handleChange = (e) => {
@@ -31,11 +60,12 @@ function CreateItem() {
       [name]: value,
     });
   };
-
   return (
     <div>
       <h1>AddView</h1>
-
+      {notifiction && (
+        <div className="errorMessage">The Item already exist </div>
+      )}
       <form onSubmit={handleSubmit}>
         <label htmlFor="item-name">Item name:</label>
         <input
