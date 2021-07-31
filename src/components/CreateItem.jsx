@@ -10,6 +10,7 @@ function CreateItem() {
     frequency: '7',
   };
   const [item, setItem] = useState(itemObj);
+  const [notifiction, setNotification] = useState(false);
   const token = localStorage.getItem('token');
 
   const [value] = useCollection(
@@ -37,7 +38,7 @@ function CreateItem() {
       return existingItem;
     };
 
-    const duplicatedItem = findDuplicateItem(item);
+    let duplicatedItem = findDuplicateItem(item);
 
     if (!duplicatedItem) {
       db.collection('items').add({
@@ -48,7 +49,8 @@ function CreateItem() {
         token,
       });
       setItem(itemObj);
-    } else alert('The item already exist');
+    }
+    setNotification(duplicatedItem);
   };
 
   const handleChange = (e) => {
@@ -58,11 +60,12 @@ function CreateItem() {
       [name]: value,
     });
   };
-
   return (
     <div>
       <h1>AddView</h1>
-
+      {notifiction && (
+        <div className="errorMessage">The Item already exist </div>
+      )}
       <form onSubmit={handleSubmit}>
         <label htmlFor="item-name">Item name:</label>
         <input
