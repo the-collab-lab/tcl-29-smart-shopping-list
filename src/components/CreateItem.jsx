@@ -2,26 +2,35 @@ import React, { useState } from 'react';
 import db from '../lib/firebase';
 import './createItem.css';
 import Navigation from './Navigation';
+import { useHistory } from 'react-router-dom';
+import { validateToken } from '../lib/validateToken';
 
 function CreateItem() {
+  const history = useHistory();
   const itemObj = {
     itemName: '',
     frequency: '7',
   };
   const [item, setItem] = useState(itemObj);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
 
-    db.collection('items').add({
-      name: item.itemName,
-      frequency: item.frequency,
-      lastPurchasedDate: null,
-      date: Date().toLocaleString(),
-      token,
-    });
-    setItem(itemObj);
+    const invalidToken = await validateToken(token);
+
+    if (!invalidToken) {
+      db.collection('items').add({
+        name: item.itemName,
+        frequency: item.frequency,
+        lastPurchasedDate: null,
+        date: Date().toLocaleString(),
+        token,
+      });
+      setItem(itemObj);
+    } else {
+      history.push('/');
+    }
   };
 
   const handleChange = (e) => {
