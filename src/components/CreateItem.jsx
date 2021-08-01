@@ -3,8 +3,11 @@ import db from '../lib/firebase';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import './createItem.css';
 import Navigation from './Navigation';
+import { useHistory } from 'react-router-dom';
+import { validateToken } from '../lib/validateToken';
 
 function CreateItem() {
+  const history = useHistory();
   const itemObj = {
     itemName: '',
     frequency: '7',
@@ -17,7 +20,7 @@ function CreateItem() {
     db.collection('items').where('token', '==', token),
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const cleanUserInput = (itemName) => {
@@ -39,8 +42,14 @@ function CreateItem() {
     };
 
     let duplicatedItem = findDuplicateItem(item);
+    const invalidToken = await validateToken(token);
 
-    if (!duplicatedItem) {
+    if (invalidToken) {
+      localStorage.clear();
+      history.push('/');
+    } else if (duplicatedItem) {
+      setNotification(duplicatedItem);
+    } else {
       db.collection('items').add({
         name: item.itemName,
         frequency: item.frequency,
@@ -50,7 +59,6 @@ function CreateItem() {
       });
       setItem(itemObj);
     }
-    setNotification(duplicatedItem);
   };
 
   const handleChange = (e) => {

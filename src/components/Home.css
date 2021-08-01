@@ -1,0 +1,29 @@
+.home {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.share-token {
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.input-box {
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.submit-button {
+  display: block;
+  margin: 0 auto;
+}
+
+.error-message {
+  color: red;
+  border: 1px solid red;
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 5px;
+}
