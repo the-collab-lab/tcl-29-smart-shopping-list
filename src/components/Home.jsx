@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import getToken from '../lib/tokens';
 import { useHistory } from 'react-router-dom';
 import db from '../lib/firebase';
@@ -10,6 +10,23 @@ const Home = () => {
   let history = useHistory();
   const [tokenName, setTokenName] = useState('');
   const [notification, setNotification] = useState(null);
+  const [error, setError] = useState(false);
+
+  let timerId;
+
+  const resetError = () => {
+    timerId = setTimeout(() => {
+      setNotification(null);
+      setError(false);
+    }, 10000);
+  };
+
+  useEffect(() => {
+    if (error) resetError();
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [error]); // eslint-disable-line
 
   const generateToken = () => {
     const token = getToken();
@@ -45,12 +62,6 @@ const Home = () => {
     history.push('/list-view');
   };
 
-  const resetError = () => {
-    setTimeout(() => {
-      setNotification(null);
-    }, 10000);
-  };
-
   const compareToken = (e) => {
     e.preventDefault();
 
@@ -66,17 +77,17 @@ const Home = () => {
           localStorage.setItem('token', tokenName);
           history.push('/list-view');
         } else {
+          setError(true);
           setNotification(
             'Token not found - please check spelling and try again or create new list',
           );
         }
-        resetError();
       })
       .catch((error) => {
+        setError(true);
         setNotification(
           'An unexpected error occurred, please refresh the page and try again',
         );
-        resetError();
       });
   };
 
@@ -87,13 +98,13 @@ const Home = () => {
       <p> - or - </p>
       <p>Join an existing shopping list by entering a three word token.</p>
 
+      {notification ? (
+        <div className="error-message">{notification}</div>
+      ) : null}
+
       <form onSubmit={compareToken}>
         <label htmlFor="inputToken" className="share-token">
           Share token
-          <br />
-          {notification ? (
-            <div className="error-message">{notification}</div>
-          ) : null}
         </label>
         <input
           className="input-box"
