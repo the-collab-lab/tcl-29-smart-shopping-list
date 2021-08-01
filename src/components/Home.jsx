@@ -69,11 +69,7 @@ const Home = () => {
       .where('tokenArray', 'array-contains', tokenName)
       .get()
       .then((querySnapshot) => {
-        let tokenInDB;
-        querySnapshot.forEach((doc) => {
-          tokenInDB = doc.exists;
-        });
-        if (tokenInDB) {
+        if (!querySnapshot.empty) {
           localStorage.setItem('token', tokenName);
           history.push('/list-view');
         } else {
