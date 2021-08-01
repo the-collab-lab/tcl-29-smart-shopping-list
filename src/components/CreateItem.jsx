@@ -68,6 +68,7 @@ function CreateItem() {
       [name]: value,
     });
   };
+
   return (
     <div>
       <h1>AddView</h1>
@@ -122,7 +123,9 @@ function CreateItem() {
           </div>
         </fieldset>
 
-        <button type="submit">Add item</button>
+        <button type="submit" disabled={item.itemName.length === 0}>
+          Add item
+        </button>
       </form>
       <Navigation />
     </div>

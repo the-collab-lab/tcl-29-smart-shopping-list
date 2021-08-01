@@ -109,7 +109,11 @@ const Home = () => {
           value={tokenName}
           onChange={(e) => setTokenName(e.target.value)}
         />
-        <button type="submit" className="submit-button">
+        <button
+          type="submit"
+          className="submit-button"
+          disabled={tokenName.length === 0}
+        >
           Join an existing list
         </button>
       </form>
