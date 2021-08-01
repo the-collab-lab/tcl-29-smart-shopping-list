@@ -27,6 +27,7 @@ const Home = () => {
             })
             .catch((error) => {
               console.log(error);
+              return;
             });
         } else {
           db.collection('tokens')
@@ -36,6 +37,7 @@ const Home = () => {
             })
             .catch((error) => {
               console.log(error);
+              return;
             });
         }
       });
