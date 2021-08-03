@@ -3,3 +3,13 @@
   margin: 0 auto;
   display: block;
 }
+
+.list-view ul {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.list-view li {
+  list-style-type: none;
+}
