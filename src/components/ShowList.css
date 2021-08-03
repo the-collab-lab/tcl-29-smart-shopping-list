@@ -1,0 +1,7 @@
+.check-item {
+  display: flex;
+}
+
+.check-item li {
+  list-style: none;
+}

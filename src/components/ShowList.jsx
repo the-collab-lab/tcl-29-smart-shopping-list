@@ -2,6 +2,7 @@ import React from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import db from '../lib/firebase';
 import Navigation from './Navigation';
+import './ShowList.css';
 
 function ShowList() {
   const token = localStorage.getItem('token');
@@ -19,7 +20,10 @@ function ShowList() {
           Collection:
           <ul>
             {value.docs.map((doc) => (
-              <li key={doc.id}>{doc.data().name}</li>
+              <div className="check-item">
+                <input type="checkbox" />
+                <li key={doc.id}>{doc.data().name}</li>
+              </div>
             ))}
           </ul>
         </div>
