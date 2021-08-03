@@ -3,6 +3,7 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import db from '../lib/firebase';
 import Navigation from './Navigation';
 import { useHistory } from 'react-router-dom';
+import './ShowList.css';
 
 function ShowList() {
   const token = localStorage.getItem('token');
@@ -16,8 +17,8 @@ function ShowList() {
   };
 
   return (
-    <div>
-      <h1>ListView</h1>
+    <div className="list-view">
+      <h1>Smart Shopping List</h1>
       {error && <p>Error</p>}
       {loading && <p>Loading..</p>}
       {!loading && value.docs.length === 0 && (

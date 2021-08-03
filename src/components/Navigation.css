@@ -1,0 +1,24 @@
+.navigation ul {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation li {
+  list-style-type: none;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.navigation a {
+  text-decoration: none;
+}
+
+.navigation a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+.active {
+  font-weight: 800;
+}
