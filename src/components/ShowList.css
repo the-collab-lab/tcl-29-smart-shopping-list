@@ -5,3 +5,7 @@
 .check-item li {
   list-style: none;
 }
+
+.completed {
+  color: gray;
+}
