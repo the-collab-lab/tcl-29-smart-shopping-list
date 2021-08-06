@@ -9,12 +9,12 @@ const Navigation = () => {
       <ul>
         <li>
           <NavLink to="/list-view" activeClassName="active">
-            ListView
+            List
           </NavLink>
         </li>
         <li>
           <NavLink to="/add-view" activeClassName="active">
-            AddView
+            Add Item
           </NavLink>
         </li>
       </ul>
