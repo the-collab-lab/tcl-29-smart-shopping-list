@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import db from '../lib/firebase';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import './createItem.css';
-import Navigation from './Navigation';
 import { useHistory } from 'react-router-dom';
 import { validateToken } from '../lib/validateToken';
 
@@ -127,7 +126,6 @@ function CreateItem() {
           Add item
         </button>
       </form>
-      <Navigation />
     </div>
   );
 }

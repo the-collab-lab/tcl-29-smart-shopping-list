@@ -1,9 +1,9 @@
-/* .App {
+.App {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-} */
+  justify-content: flex-start;
+}
 
 form {
   margin-left: 10px;

@@ -1,7 +1,15 @@
+.navigation {
+  justify-self: flex-end;
+}
+
 .navigation ul {
-  padding: 0;
+  padding: 32px;
   display: flex;
   justify-content: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 .navigation li {
