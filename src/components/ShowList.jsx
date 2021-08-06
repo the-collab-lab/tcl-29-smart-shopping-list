@@ -19,8 +19,8 @@ function ShowList() {
         <div>
           Collection:
           <ul>
-            {value.docs.map((doc, index) => (
-              <Item key={index} {...doc.data()} id={doc.id} />
+            {value.docs.map((doc) => (
+              <Item key={doc.id} {...doc.data()} id={doc.id} />
             ))}
           </ul>
         </div>
