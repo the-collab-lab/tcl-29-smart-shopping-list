@@ -1,18 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import './Navigation.css';
+
 const Navigation = () => {
   return (
-    <div>
+    <div className="navigation">
       <ul>
         <li>
-          <NavLink to="/list-view" activeStyle={{ fontWeight: 'bold' }}>
-            ListView
+          <NavLink to="/list-view" activeClassName="active">
+            List
           </NavLink>
         </li>
         <li>
-          <NavLink to="/add-view" activeStyle={{ fontWeight: 'bold' }}>
-            AddView
+          <NavLink to="/add-view" activeClassName="active">
+            Add Item
           </NavLink>
         </li>
       </ul>

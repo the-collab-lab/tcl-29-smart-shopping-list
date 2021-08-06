@@ -2,6 +2,7 @@ import React from 'react';
 import CreateItem from './components/CreateItem';
 import ShowList from './components/ShowList';
 import Home from './components/Home';
+import Navigation from './components/Navigation';
 
 import './App.css';
 import {
@@ -23,9 +24,11 @@ const App = () => {
           </Route>
           <Route path="/list-view">
             <ShowList />
+            <Navigation />
           </Route>
           <Route path="/add-view">
             <CreateItem />
+            <Navigation />
           </Route>
         </Switch>
         {existingToken ? <Redirect to="/list-view" /> : <Redirect to="/" />}
