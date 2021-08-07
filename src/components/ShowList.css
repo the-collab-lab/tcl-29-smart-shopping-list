@@ -1,11 +1,9 @@
 .check-item {
   display: flex;
 }
-
 .check-item li {
   list-style: none;
 }
-
-.completed {
-  color: gray;
+.checked {
+  text-decoration: line-through;
 }
