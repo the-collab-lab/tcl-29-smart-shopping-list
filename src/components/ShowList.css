@@ -11,6 +11,12 @@
   flex-direction: column;
 }
 
-.list-view li {
-  list-style-type: none;
+.check-item {
+  display: flex;
+}
+.check-item li {
+  list-style: none;
+}
+.checked {
+  text-decoration: line-through;
 }

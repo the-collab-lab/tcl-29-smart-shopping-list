@@ -2,6 +2,7 @@ import React from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import db from '../lib/firebase';
 import { useHistory } from 'react-router-dom';
+import Item from './Item';
 import './ShowList.css';
 
 function ShowList() {
@@ -14,7 +15,6 @@ function ShowList() {
   const handleClick = () => {
     history.push('/add-view');
   };
-
   return (
     <div className="list-view">
       <h1>Smart Shopping List</h1>
@@ -34,7 +34,7 @@ function ShowList() {
           Collection:
           <ul>
             {value.docs.map((doc) => (
-              <li key={doc.id}>{doc.data().name}</li>
+              <Item key={doc.id} {...doc.data()} id={doc.id} />
             ))}
           </ul>
         </div>
