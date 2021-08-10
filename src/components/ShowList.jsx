@@ -31,7 +31,7 @@ function ShowList() {
       )}
       {value && value.docs.length > 0 && (
         <div>
-          Collection:
+          <input />
           <ul>
             {value.docs.map((doc) => (
               <Item key={doc.id} {...doc.data()} id={doc.id} />
