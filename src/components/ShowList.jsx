@@ -7,7 +7,7 @@ import './ShowList.css';
 
 function ShowList() {
   const [filter, setFilter] = useState('');
-  const [filteredItems, setFilteredItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState('');
   const token = localStorage.getItem('token');
   const history = useHistory();
   const [value, loading, error] = useCollection(
@@ -20,14 +20,13 @@ function ShowList() {
 
   const handleChange = (e) => {
     setFilter(e.target.value);
-    const itemArray = value.docs.map((doc) => doc.data());
-    console.log('item data array: ', itemArray);
+    const itemArray = value.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    // console.log(itemArray);
     setFilteredItems(
       itemArray.filter((item) =>
         item.name.toLowerCase().includes(filter.toLowerCase()),
       ),
     );
-    console.log('filteredItems state', filteredItems);
   };
 
   return (
@@ -53,8 +52,6 @@ function ShowList() {
             onChange={handleChange}
           />
           <ul>
-            {/* <Item key={doc.id} {...doc.data()} id={doc.id} /> */}
-
             {value.docs.map((doc) => (
               <Item key={doc.id} {...doc.data()} id={doc.id} />
             ))}
