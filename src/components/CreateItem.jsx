@@ -52,7 +52,9 @@ function CreateItem() {
       db.collection('items').add({
         name: item.itemName,
         frequency: item.frequency,
+        numberOfPurchases: 0,
         lastPurchasedDate: null,
+        daysBetweenPurchases: null,
         date: Date().toLocaleString(),
         token,
       });
