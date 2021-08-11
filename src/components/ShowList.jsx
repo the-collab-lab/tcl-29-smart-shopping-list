@@ -49,9 +49,11 @@ function ShowList() {
             value={filter}
             onChange={handleChange}
           />
-          <button onClick={() => setFilter('')}>
-            <FontAwesomeIcon icon={['fas', 'times']} />
-          </button>
+          {filter && (
+            <button onClick={() => setFilter('')}>
+              <FontAwesomeIcon icon={['fas', 'times']} />
+            </button>
+          )}
           <ul>
             {filter
               ? value.docs
@@ -78,3 +80,7 @@ function ShowList() {
 }
 
 export default ShowList;
+
+/**
+ * filter &&()
+ */
