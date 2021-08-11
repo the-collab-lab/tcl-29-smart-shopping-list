@@ -50,7 +50,10 @@ function ShowList() {
             onChange={handleChange}
           />
           {filter && (
-            <button onClick={() => setFilter('')}>
+            <button
+              onClick={() => setFilter('')}
+              aria-label="clear filter text"
+            >
               <FontAwesomeIcon icon={['fas', 'times']} />
             </button>
           )}
