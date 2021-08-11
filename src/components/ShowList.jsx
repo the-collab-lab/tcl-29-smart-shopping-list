@@ -80,7 +80,3 @@ function ShowList() {
 }
 
 export default ShowList;
-
-/**
- * filter &&()
- */
