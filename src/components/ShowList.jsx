@@ -7,6 +7,7 @@ import './ShowList.css';
 
 function ShowList() {
   const [filter, setFilter] = useState('');
+  const [filteredItems, setFilteredItems] = useState([]);
   const token = localStorage.getItem('token');
   const history = useHistory();
   const [value, loading, error] = useCollection(
@@ -16,6 +17,19 @@ function ShowList() {
   const handleClick = () => {
     history.push('/add-view');
   };
+
+  const handleChange = (e) => {
+    setFilter(e.target.value);
+    const itemArray = value.docs.map((doc) => doc.data());
+    console.log('item data array: ', itemArray);
+    setFilteredItems(
+      itemArray.filter((item) =>
+        item.name.toLowerCase().includes(filter.toLowerCase()),
+      ),
+    );
+    console.log('filteredItems state', filteredItems);
+  };
+
   return (
     <div className="list-view">
       <h1>Smart Shopping List</h1>
@@ -36,9 +50,11 @@ function ShowList() {
             type="text"
             placeholder="Filter items..."
             value={filter}
-            onChange={(e) => setFilter(e.target.value)}
+            onChange={handleChange}
           />
           <ul>
+            {/* <Item key={doc.id} {...doc.data()} id={doc.id} /> */}
+
             {value.docs.map((doc) => (
               <Item key={doc.id} {...doc.data()} id={doc.id} />
             ))}
