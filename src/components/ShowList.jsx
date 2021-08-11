@@ -5,10 +5,14 @@ import { useHistory } from 'react-router-dom';
 import Item from './Item';
 import './ShowList.css';
 import { doc } from 'prettier';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(fas);
 
 function ShowList() {
   const [filter, setFilter] = useState('');
-  // const [filteredItems, setFilteredItems] = useState([]);
   const token = localStorage.getItem('token');
   const history = useHistory();
   const [value, loading, error] = useCollection(
@@ -45,6 +49,9 @@ function ShowList() {
             value={filter}
             onChange={handleChange}
           />
+          <button onClick={() => setFilter('')}>
+            <FontAwesomeIcon icon={['fas', 'times']} />
+          </button>
           <ul>
             {filter
               ? value.docs
