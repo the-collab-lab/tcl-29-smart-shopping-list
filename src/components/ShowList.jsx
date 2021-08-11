@@ -4,10 +4,11 @@ import db from '../lib/firebase';
 import { useHistory } from 'react-router-dom';
 import Item from './Item';
 import './ShowList.css';
+import { doc } from 'prettier';
 
 function ShowList() {
   const [filter, setFilter] = useState('');
-  const [filteredItems, setFilteredItems] = useState('');
+  // const [filteredItems, setFilteredItems] = useState([]);
   const token = localStorage.getItem('token');
   const history = useHistory();
   const [value, loading, error] = useCollection(
@@ -20,13 +21,6 @@ function ShowList() {
 
   const handleChange = (e) => {
     setFilter(e.target.value);
-    const itemArray = value.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    // console.log(itemArray);
-    setFilteredItems(
-      itemArray.filter((item) =>
-        item.name.toLowerCase().includes(filter.toLowerCase()),
-      ),
-    );
   };
 
   return (
@@ -52,9 +46,23 @@ function ShowList() {
             onChange={handleChange}
           />
           <ul>
-            {value.docs.map((doc) => (
-              <Item key={doc.id} {...doc.data()} id={doc.id} />
-            ))}
+            {filter
+              ? value.docs
+                  .map((doc) => ({ id: doc.id, ...doc.data() }))
+                  .filter((item) =>
+                    item.name.toLowerCase().includes(filter.toLowerCase()),
+                  )
+                  .map((item) => (
+                    <Item
+                      key={item.id}
+                      id={doc.id}
+                      lastPurchasedDate={item.lastPurchasedDate}
+                      name={item.name}
+                    />
+                  ))
+              : value.docs.map((doc) => (
+                  <Item key={doc.id} {...doc.data()} id={doc.id} />
+                ))}
           </ul>
         </div>
       )}
