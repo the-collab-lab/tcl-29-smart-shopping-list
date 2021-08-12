@@ -54,8 +54,6 @@ function CreateItem() {
         frequency: item.frequency,
         numberOfPurchases: 0,
         lastPurchasedDate: null,
-        daysBetweenPurchases: null,
-        date: Date().toLocaleString(),
         token,
       });
       setItem(itemObj);

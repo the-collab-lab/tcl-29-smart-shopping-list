@@ -11,13 +11,15 @@ const Item = ({
 }) => {
   const checkHandler = async () => {
     if (lastPurchasedDate === null || !checked) {
-      let purchased = numberOfPurchases + 1;
-      let purchaseInterval = getPurchaseInterval();
-      await db.collection('items').doc(id).update({
-        lastPurchasedDate: new Date(),
-        numberOfPurchases: purchased,
-        daysBetweenPurchases: purchaseInterval,
-      });
+      let nextPurchaseEstimate = getPurchaseInterval();
+      await db
+        .collection('items')
+        .doc(id)
+        .update({
+          lastPurchasedDate: new Date(),
+          numberOfPurchases: numberOfPurchases + 1,
+          frequency: nextPurchaseEstimate,
+        });
     }
   };
 
@@ -42,9 +44,6 @@ const Item = ({
               (60 * 60 * 24),
           )
         : lastEstimate;
-    console.log('lastEstimate', lastEstimate);
-    console.log('latestInterval', latestInterval);
-    console.log('numberOfPurchases', numberOfPurchases);
     let estimatedInterval = calculateEstimate(
       lastEstimate,
       latestInterval,
