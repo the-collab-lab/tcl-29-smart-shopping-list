@@ -5,11 +5,6 @@ import { useHistory } from 'react-router-dom';
 import Item from './Item';
 import './ShowList.css';
 import { doc } from 'prettier';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-library.add(fas);
 
 function ShowList() {
   const [filter, setFilter] = useState('');
@@ -54,7 +49,7 @@ function ShowList() {
               onClick={() => setFilter('')}
               aria-label="clear filter text"
             >
-              <FontAwesomeIcon icon={['fas', 'times']} />
+              <i class="fas fa-times"></i>
             </button>
           )}
           <ul>
