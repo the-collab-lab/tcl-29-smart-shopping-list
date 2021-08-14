@@ -9,16 +9,14 @@ const Item = ({
   lastPurchasedDate,
   numberOfPurchases,
 }) => {
-  const checkHandler = async () => {
+  const checkHandler = () => {
     if (lastPurchasedDate === null || !checked) {
-      let nextPurchaseEstimate = getPurchaseInterval();
-      await db
-        .collection('items')
+      db.collection('items')
         .doc(id)
         .update({
           lastPurchasedDate: new Date(),
           numberOfPurchases: numberOfPurchases + 1,
-          nextPurchase: nextPurchaseEstimate,
+          nextPurchase: getPurchaseInterval(),
         });
     }
   };
@@ -35,11 +33,12 @@ const Item = ({
 
   const getPurchaseInterval = () => {
     let lastEstimate = nextPurchase;
+    let currentDate = new Date().getTime();
     let latestInterval =
       lastPurchasedDate != null
         ? Math.floor(
             // convert from date to seconds
-            (new Date().getTime() / 1000 - lastPurchasedDate.seconds) /
+            (currentDate / 1000 - lastPurchasedDate.seconds) /
               // convert from seconds to day
               (60 * 60 * 24),
           )
