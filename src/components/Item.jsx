@@ -1,10 +1,23 @@
 import React from 'react';
 import db from '../lib/firebase';
+import calculateEstimate from '../lib/estimates';
 
-const Item = ({ name, id, lastPurchasedDate }) => {
+const Item = ({
+  name,
+  id,
+  nextPurchase,
+  lastPurchasedDate,
+  numberOfPurchases,
+}) => {
   const checkHandler = () => {
     if (lastPurchasedDate === null || !checked) {
-      db.collection('items').doc(id).update({ lastPurchasedDate: new Date() });
+      db.collection('items')
+        .doc(id)
+        .update({
+          lastPurchasedDate: new Date(),
+          numberOfPurchases: numberOfPurchases + 1,
+          nextPurchase: getPurchaseInterval(),
+        });
     }
   };
 
@@ -17,6 +30,27 @@ const Item = ({ name, id, lastPurchasedDate }) => {
       return now - lastPurchasedDate.seconds < day;
     }
   };
+
+  const getPurchaseInterval = () => {
+    let lastEstimate = nextPurchase;
+    let currentDate = new Date().getTime();
+    let latestInterval =
+      lastPurchasedDate != null
+        ? Math.round(
+            // convert from date to seconds
+            (currentDate / 1000 - lastPurchasedDate.seconds) /
+              // convert from seconds to day
+              (60 * 60 * 24),
+          )
+        : lastEstimate;
+    let estimatedInterval = calculateEstimate(
+      lastEstimate,
+      latestInterval,
+      numberOfPurchases,
+    );
+    return estimatedInterval;
+  };
+
   const checked = checkDate(lastPurchasedDate);
   const className = checked ? 'checked' : '';
   return (

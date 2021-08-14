@@ -9,7 +9,7 @@ function CreateItem() {
   const history = useHistory();
   const itemObj = {
     itemName: '',
-    frequency: '7',
+    nextPurchase: '7',
   };
   const [item, setItem] = useState(itemObj);
   const [notifiction, setNotification] = useState(false);
@@ -51,9 +51,9 @@ function CreateItem() {
     } else {
       db.collection('items').add({
         name: item.itemName,
-        frequency: item.frequency,
+        nextPurchase: parseInt(item.nextPurchase),
+        numberOfPurchases: 0,
         lastPurchasedDate: null,
-        date: Date().toLocaleString(),
         token,
       });
       setItem(itemObj);
@@ -90,9 +90,9 @@ function CreateItem() {
               type="radio"
               id="soon"
               value={7}
-              name="frequency"
+              name="nextPurchase"
               onChange={handleChange}
-              checked={item.frequency === '7'}
+              checked={item.nextPurchase === '7'}
             />
             <label htmlFor="soon">Soon</label>
           </div>
@@ -102,9 +102,9 @@ function CreateItem() {
               type="radio"
               id="kind-of-soon"
               value={14}
-              name="frequency"
+              name="nextPurchase"
               onChange={handleChange}
-              checked={item.frequency === '14'}
+              checked={item.nextPurchase === '14'}
             />
             <label htmlFor="kind-of-soon">Kind of soon</label>
           </div>
@@ -114,9 +114,9 @@ function CreateItem() {
               type="radio"
               id="not-soon"
               value={30}
-              name="frequency"
+              name="nextPurchase"
               onChange={handleChange}
-              checked={item.frequency === '30'}
+              checked={item.nextPurchase === '30'}
             />
             <label htmlFor="not-soon">Not soon</label>
           </div>
