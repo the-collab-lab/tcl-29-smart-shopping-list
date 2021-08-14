@@ -36,7 +36,7 @@ const Item = ({
     let currentDate = new Date().getTime();
     let latestInterval =
       lastPurchasedDate != null
-        ? Math.floor(
+        ? Math.round(
             // convert from date to seconds
             (currentDate / 1000 - lastPurchasedDate.seconds) /
               // convert from seconds to day
