@@ -48,6 +48,7 @@ function ShowList() {
             <button
               onClick={() => setFilter('')}
               aria-label="clear filter text"
+              className="clear-button"
             >
               <i class="fas fa-times"></i>
             </button>

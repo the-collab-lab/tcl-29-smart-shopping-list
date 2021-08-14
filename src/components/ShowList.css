@@ -21,8 +21,8 @@
   text-decoration: line-through;
 }
 
-button:focus,
-button:hover {
+.clear-button:focus,
+.clear-button:hover {
   border: solid 2px black;
   border-radius: 2px;
 }
