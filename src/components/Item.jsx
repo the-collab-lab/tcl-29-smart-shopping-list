@@ -5,7 +5,7 @@ import calculateEstimate from '../lib/estimates';
 const Item = ({
   name,
   id,
-  frequency,
+  nextPurchase,
   lastPurchasedDate,
   numberOfPurchases,
 }) => {
@@ -18,7 +18,7 @@ const Item = ({
         .update({
           lastPurchasedDate: new Date(),
           numberOfPurchases: numberOfPurchases + 1,
-          frequency: nextPurchaseEstimate,
+          nextPurchase: nextPurchaseEstimate,
         });
     }
   };
@@ -34,7 +34,7 @@ const Item = ({
   };
 
   const getPurchaseInterval = () => {
-    let lastEstimate = frequency;
+    let lastEstimate = nextPurchase;
     let latestInterval =
       lastPurchasedDate != null
         ? Math.floor(
