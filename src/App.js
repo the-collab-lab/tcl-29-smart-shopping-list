@@ -3,7 +3,6 @@ import CreateItem from './components/CreateItem';
 import ShowList from './components/ShowList';
 import Home from './components/Home';
 import Navigation from './components/Navigation';
-
 import './App.css';
 import {
   Redirect,

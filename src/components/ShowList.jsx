@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import db from '../lib/firebase';
 import { useHistory } from 'react-router-dom';
 import Item from './Item';
 import './ShowList.css';
+import { doc } from 'prettier';
 
 function ShowList() {
+  const [filter, setFilter] = useState('');
   const token = localStorage.getItem('token');
   const history = useHistory();
   const [value, loading, error] = useCollection(
@@ -15,6 +17,11 @@ function ShowList() {
   const handleClick = () => {
     history.push('/add-view');
   };
+
+  const handleChange = (e) => {
+    setFilter(e.target.value);
+  };
+
   return (
     <div className="list-view">
       <h1>Smart Shopping List</h1>
@@ -31,11 +38,39 @@ function ShowList() {
       )}
       {value && value.docs.length > 0 && (
         <div>
-          Collection:
+          <input
+            type="text"
+            placeholder="Filter items..."
+            value={filter}
+            onChange={handleChange}
+          />
+          {filter && (
+            <button
+              onClick={() => setFilter('')}
+              aria-label="clear filter text"
+              className="clear-button"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          )}
           <ul>
-            {value.docs.map((doc) => (
-              <Item key={doc.id} {...doc.data()} id={doc.id} />
-            ))}
+            {filter
+              ? value.docs
+                  .map((doc) => ({ id: doc.id, ...doc.data() }))
+                  .filter((item) =>
+                    item.name.toLowerCase().includes(filter.toLowerCase()),
+                  )
+                  .map((item) => (
+                    <Item
+                      key={item.id}
+                      id={doc.id}
+                      lastPurchasedDate={item.lastPurchasedDate}
+                      name={item.name}
+                    />
+                  ))
+              : value.docs.map((doc) => (
+                  <Item key={doc.id} {...doc.data()} id={doc.id} />
+                ))}
           </ul>
         </div>
       )}
