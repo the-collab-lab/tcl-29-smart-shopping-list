@@ -4,7 +4,6 @@ import db from '../lib/firebase';
 import { useHistory } from 'react-router-dom';
 import Item from './Item';
 import './ShowList.css';
-import { doc } from 'prettier';
 
 function ShowList() {
   const [filter, setFilter] = useState('');
@@ -56,17 +55,14 @@ function ShowList() {
           <ul>
             {filter
               ? value.docs
-                  .map((doc) => ({ id: doc.id, ...doc.data() }))
                   .filter((item) =>
-                    item.name.toLowerCase().includes(filter.toLowerCase()),
+                    item
+                      .data()
+                      .name.toLowerCase()
+                      .includes(filter.toLowerCase()),
                   )
                   .map((item) => (
-                    <Item
-                      key={item.id}
-                      id={doc.id}
-                      lastPurchasedDate={item.lastPurchasedDate}
-                      name={item.name}
-                    />
+                    <Item key={item.id} id={item.id} {...item.data()} />
                   ))
               : value.docs.map((doc) => (
                   <Item key={doc.id} {...doc.data()} id={doc.id} />
