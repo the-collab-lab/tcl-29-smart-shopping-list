@@ -8,7 +8,6 @@ const Item = ({
   nextPurchase,
   lastPurchasedDate,
   numberOfPurchases,
-  setConfirmDialog,
 }) => {
   const checkHandler = () => {
     if (lastPurchasedDate === null || !checked) {
@@ -63,10 +62,11 @@ const Item = ({
         .doc(id)
         .delete()
         .then(() => {
-          setConfirmDialog(`${name} successfully deleted!`);
-          setTimeout(() => {
-            setConfirmDialog(null);
-          }, 10000);
+          console.log(`${name} successfully deleted!`);
+          // setConfirmDialog(`${name} successfully deleted!`);
+          // setTimeout(() => {
+          //   setConfirmDialog(null);
+          // }, 10000);
         })
         .catch((error) => {
           console.error('Error removing document: ', error);
