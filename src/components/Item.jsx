@@ -8,6 +8,7 @@ const Item = ({
   nextPurchase,
   lastPurchasedDate,
   numberOfPurchases,
+  setConfirmDialog,
 }) => {
   const checkHandler = () => {
     if (lastPurchasedDate === null || !checked) {
@@ -53,28 +54,40 @@ const Item = ({
 
   function handleClick(e) {
     e.preventDefault();
-    console.log('clicked');
+    const confirmation = window.confirm(
+      `Are you sure you want to delete ${name}?`,
+    );
 
-    db.collection('items')
-      .doc(id)
-      .delete()
-      .then(() => {
-        console.log('Document successfully deleted!');
-      })
-      .catch((error) => {
-        console.error('Error removing document: ', error);
-      });
+    if (confirmation) {
+      db.collection('items')
+        .doc(id)
+        .delete()
+        .then(() => {
+          setConfirmDialog(`${name} successfully deleted!`);
+          setTimeout(() => {
+            setConfirmDialog(null);
+          }, 10000);
+        })
+        .catch((error) => {
+          console.error('Error removing document: ', error);
+        });
+    }
   }
 
   const checked = checkDate(lastPurchasedDate);
   const className = checked ? 'checked' : '';
   return (
     <li className={`${className} check-item`}>
-      <input type="checkbox" onChange={checkHandler} checked={checked} />
-      {name}
-      <a href="x" onClick={handleClick}>
-        delete
-      </a>
+      <div>
+        <input type="checkbox" onChange={checkHandler} checked={checked} />
+        {name}
+      </div>
+
+      <div>
+        <a className="delete-button" href="x" onClick={handleClick}>
+          delete
+        </a>
+      </div>
     </li>
   );
 };

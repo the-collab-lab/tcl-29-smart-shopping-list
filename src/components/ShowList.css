@@ -13,6 +13,8 @@
 
 .check-item {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .check-item li {
   list-style: none;
@@ -25,4 +27,8 @@
 .clear-button:hover {
   border: solid 2px black;
   border-radius: 2px;
+}
+
+.delete-button {
+  text-align: right;
 }
