@@ -51,13 +51,31 @@ const Item = ({
     return estimatedInterval;
   };
 
+  function handleClick(e) {
+    e.preventDefault();
+    console.log('clicked');
+
+    db.collection('items')
+      .doc(id)
+      .delete()
+      .then(() => {
+        console.log('Document successfully deleted!');
+      })
+      .catch((error) => {
+        console.error('Error removing document: ', error);
+      });
+  }
+
   const checked = checkDate(lastPurchasedDate);
   const className = checked ? 'checked' : '';
   return (
-    <div className="check-item">
+    <li className={`${className} check-item`}>
       <input type="checkbox" onChange={checkHandler} checked={checked} />
-      <li className={className}>{name}</li>
-    </div>
+      {name}
+      <a href="x" onClick={handleClick}>
+        delete
+      </a>
+    </li>
   );
 };
 
