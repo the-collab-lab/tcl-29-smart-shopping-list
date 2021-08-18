@@ -65,7 +65,6 @@ const Item = ({
         .doc(id)
         .delete()
         .then(() => {
-          console.log(`${name} successfully deleted!`);
           setActionMessage(`${name} successfully deleted!`);
           setTimeout(() => {
             setActionMessage(null);
