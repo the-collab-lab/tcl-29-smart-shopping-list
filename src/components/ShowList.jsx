@@ -7,6 +7,7 @@ import './ShowList.css';
 
 function ShowList() {
   const [filter, setFilter] = useState('');
+  const [actionMessage, setActionMessage] = useState(null);
   const token = localStorage.getItem('token');
   const history = useHistory();
   const [value, loading, error] = useCollection(
@@ -49,9 +50,12 @@ function ShowList() {
               aria-label="clear filter text"
               className="clear-button"
             >
-              <i class="fas fa-times"></i>
+              <i className="fas fa-times"></i>
             </button>
           )}
+          {actionMessage ? (
+            <p className="success-message">{actionMessage}</p>
+          ) : null}
           <ul>
             {filter
               ? value.docs
@@ -62,10 +66,20 @@ function ShowList() {
                       .includes(filter.toLowerCase()),
                   )
                   .map((item) => (
-                    <Item key={item.id} id={item.id} {...item.data()} />
+                    <Item
+                      key={item.id}
+                      setActionMessage={setActionMessage}
+                      id={item.id}
+                      {...item.data()}
+                    />
                   ))
               : value.docs.map((doc) => (
-                  <Item key={doc.id} {...doc.data()} id={doc.id} />
+                  <Item
+                    key={doc.id}
+                    setActionMessage={setActionMessage}
+                    {...doc.data()}
+                    id={doc.id}
+                  />
                 ))}
           </ul>
         </div>

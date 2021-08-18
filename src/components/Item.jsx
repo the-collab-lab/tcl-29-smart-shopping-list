@@ -3,12 +3,15 @@ import db from '../lib/firebase';
 import calculateEstimate from '../lib/estimates';
 
 const Item = ({
+  setActionMessage,
   name,
   id,
   nextPurchase,
   lastPurchasedDate,
   numberOfPurchases,
 }) => {
+  console.log(setActionMessage);
+
   const checkHandler = () => {
     if (lastPurchasedDate === null || !checked) {
       db.collection('items')
@@ -63,10 +66,10 @@ const Item = ({
         .delete()
         .then(() => {
           console.log(`${name} successfully deleted!`);
-          // setConfirmDialog(`${name} successfully deleted!`);
-          // setTimeout(() => {
-          //   setConfirmDialog(null);
-          // }, 10000);
+          setActionMessage(`${name} successfully deleted!`);
+          setTimeout(() => {
+            setActionMessage(null);
+          }, 10000);
         })
         .catch((error) => {
           console.error('Error removing document: ', error);

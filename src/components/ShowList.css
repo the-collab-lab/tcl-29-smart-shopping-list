@@ -32,3 +32,10 @@
 .delete-button {
   text-align: right;
 }
+
+.success-message {
+  display: block;
+  margin: 10px auto;
+  color: green;
+  font-weight: 600;
+}
