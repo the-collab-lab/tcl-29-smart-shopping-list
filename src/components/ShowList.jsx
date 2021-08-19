@@ -21,7 +21,25 @@ function ShowList() {
     setFilter(e.target.value);
   };
 
+  const inactiveItem = (item) => {
+    const now = Date.now / 1000;
+    let elapsedTime =
+      item.lastPurchasedDate != null ? now - item.lastPurchasedDate.seconds : 0;
+    if (item.numberOfPurchase < 2 || item.nextPurchase * 2 <= elapsedTime) {
+      return true;
+    }
+    return false;
+  };
+
   const sortItems = (doc1, doc2) => {
+    if (!inactiveItem(doc1.data()) && inactiveItem(doc2.data())) {
+      return -1;
+    } else if (inactiveItem(doc1.data()) && !inactiveItem(doc2.data())) {
+      return 1;
+    }
+    if (doc1.data().nextPurchase === doc2.data().nextPurchase) {
+      return doc1.data().name.localeCompare(doc2.data().name);
+    }
     return doc1.data().nextPurchase - doc2.data().nextPurchase;
   };
 
