@@ -4,7 +4,6 @@ import db from '../lib/firebase';
 import { useHistory } from 'react-router-dom';
 import Item from './Item';
 import './ShowList.css';
-// import { doc } from 'prettier';
 
 function ShowList() {
   const [filter, setFilter] = useState('');
@@ -20,6 +19,10 @@ function ShowList() {
 
   const handleChange = (e) => {
     setFilter(e.target.value);
+  };
+
+  const sortItems = (doc1, doc2) => {
+    return doc1.data().nextPurchase - doc2.data().nextPurchase;
   };
 
   return (
@@ -50,7 +53,7 @@ function ShowList() {
               aria-label="clear filter text"
               className="clear-button"
             >
-              <i class="fas fa-times"></i>
+              <i className="fas fa-times"></i>
             </button>
           )}
           <ul>
@@ -62,6 +65,7 @@ function ShowList() {
                       .name.toLowerCase()
                       .includes(filter.toLowerCase()),
                   )
+                  .sort(sortItems)
                   .map((item) => (
                     <Item
                       key={item.id}
@@ -70,9 +74,11 @@ function ShowList() {
                       name={item.data().name}
                     />
                   ))
-              : value.docs.map((doc) => (
-                  <Item key={doc.id} {...doc.data()} id={doc.id} />
-                ))}
+              : value.docs
+                  .sort(sortItems)
+                  .map((doc) => (
+                    <Item key={doc.id} {...doc.data()} id={doc.id} />
+                  ))}
           </ul>
         </div>
       )}
