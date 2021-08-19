@@ -23,10 +23,10 @@ function ShowList() {
 
   const inactiveItem = (item) => {
     const now = new Date().getTime() / 1000;
-    const intervalDate =
-      (now - item.lastPurchasedDate.seconds) / (60 * 60 * 24);
     let elapsedTime =
-      item.lastPurchasedDate != null ? intervalDate : item.nextPurchase;
+      item.lastPurchasedDate != null
+        ? (now - item.lastPurchasedDate.seconds) / (60 * 60 * 24)
+        : item.nextPurchase;
     if (item.numberOfPurchases < 2 || item.nextPurchase * 2 <= elapsedTime) {
       return true;
     }
