@@ -86,9 +86,9 @@ const Item = ({
       </div>
 
       <div>
-        <a className="delete-button" href="x" onClick={handleClick}>
+        <button className="delete-button" onClick={handleClick}>
           delete
-        </a>
+        </button>
       </div>
     </li>
   );
