@@ -10,6 +10,8 @@ const Item = ({
   lastPurchasedDate,
   numberOfPurchases,
 }) => {
+  const oneDayInSeconds = 60 * 60 * 24;
+
   const checkHandler = () => {
     if (lastPurchasedDate === null || !checked) {
       db.collection('items')
@@ -25,10 +27,7 @@ const Item = ({
     let currentDate = new Date().getTime();
 
     let interval = Math.round(
-      // convert from date to seconds
-      (currentDate / 1000 - lastPurchasedDate.seconds) /
-        // convert from seconds to day
-        (60 * 60 * 24),
+      (currentDate / 1000 - lastPurchasedDate.seconds) / oneDayInSeconds,
     );
     return interval;
   };
@@ -49,9 +48,8 @@ const Item = ({
     if (lastPurchasedDate === null) {
       return false;
     } else {
-      const day = 60 * 60 * 24;
       const now = Date.now() / 1000;
-      return now - lastPurchasedDate.seconds < day;
+      return now - lastPurchasedDate.seconds < oneDayInSeconds;
     }
   };
 
@@ -60,22 +58,22 @@ const Item = ({
 
   const groupItemClassName = () => {
     if (
-      numberOfPurchases < 2 ||
-      (lastPurchasedDate != null &&
-        calculateLatestInterval() >= 2 * nextPurchase)
+      lastPurchasedDate != null &&
+      calculateLatestInterval() >= 2 * nextPurchase
     ) {
       return 'inactive';
     }
-    if (nextPurchase < 7) {
-      return 'soon';
-    } else if (nextPurchase >= 7 && nextPurchase <= 30) {
-      return 'kind-of-soon';
-    } else if (nextPurchase > 30) {
-      return 'not-so-soon';
+    switch (true) {
+      case nextPurchase < 7:
+        return 'soon';
+      case nextPurchase >= 7 && nextPurchase <= 30:
+        return 'kind-of-soon';
+      default:
+        return 'not-so-soon';
     }
   };
 
-  const setARIA = (className, name) => {
+  const setARIA = (className) => {
     if (className === 'inactive') {
       return `${name} is inactive`;
     } else {

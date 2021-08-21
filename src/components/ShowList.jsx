@@ -21,28 +21,30 @@ function ShowList() {
     setFilter(e.target.value);
   };
 
-  const inactiveItem = (item) => {
+  const isInactiveItem = (item) => {
     const now = new Date().getTime() / 1000;
+    const oneDayInSeconds = 60 * 60 * 24;
     let elapsedTime =
       item.lastPurchasedDate != null
-        ? (now - item.lastPurchasedDate.seconds) / (60 * 60 * 24)
+        ? (now - item.lastPurchasedDate.seconds) / oneDayInSeconds
         : item.nextPurchase;
-    if (item.numberOfPurchases < 2 || item.nextPurchase * 2 <= elapsedTime) {
+    if (item.nextPurchase * 2 <= elapsedTime) {
       return true;
     }
     return false;
   };
 
-  const sortItems = (doc1, doc2) => {
-    if (!inactiveItem(doc1.data()) && inactiveItem(doc2.data())) {
+  const sortItems = (item1, item2) => {
+    if (!isInactiveItem(item1.data()) && isInactiveItem(item2.data())) {
       return -1;
-    } else if (inactiveItem(doc1.data()) && !inactiveItem(doc2.data())) {
+    } else if (isInactiveItem(item1.data()) && !isInactiveItem(item2.data())) {
       return 1;
     }
-    if (doc1.data().nextPurchase === doc2.data().nextPurchase) {
-      return doc1.data().name.localeCompare(doc2.data().name);
+
+    if (item1.data().nextPurchase === item2.data().nextPurchase) {
+      return item1.data().name.localeCompare(item2.data().name);
     }
-    return doc1.data().nextPurchase - doc2.data().nextPurchase;
+    return item1.data().nextPurchase - item2.data().nextPurchase;
   };
 
   return (
