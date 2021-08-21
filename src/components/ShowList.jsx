@@ -4,7 +4,6 @@ import db from '../lib/firebase';
 import { useHistory } from 'react-router-dom';
 import Item from './Item';
 import './ShowList.css';
-import { doc } from 'prettier';
 
 function ShowList() {
   const [filter, setFilter] = useState('');
@@ -20,6 +19,32 @@ function ShowList() {
 
   const handleChange = (e) => {
     setFilter(e.target.value);
+  };
+
+  const isInactiveItem = (item) => {
+    const now = new Date().getTime() / 1000;
+    const oneDayInSeconds = 60 * 60 * 24;
+    let elapsedTime =
+      item.lastPurchasedDate != null
+        ? (now - item.lastPurchasedDate.seconds) / oneDayInSeconds
+        : item.nextPurchase;
+    if (item.nextPurchase * 2 <= elapsedTime) {
+      return true;
+    }
+    return false;
+  };
+
+  const sortItems = (item1, item2) => {
+    if (!isInactiveItem(item1.data()) && isInactiveItem(item2.data())) {
+      return -1;
+    } else if (isInactiveItem(item1.data()) && !isInactiveItem(item2.data())) {
+      return 1;
+    }
+
+    if (item1.data().nextPurchase === item2.data().nextPurchase) {
+      return item1.data().name.localeCompare(item2.data().name);
+    }
+    return item1.data().nextPurchase - item2.data().nextPurchase;
   };
 
   return (
@@ -50,27 +75,32 @@ function ShowList() {
               aria-label="clear filter text"
               className="clear-button"
             >
-              <i class="fas fa-times"></i>
+              <i className="fas fa-times"></i>
             </button>
           )}
           <ul>
             {filter
               ? value.docs
-                  .map((doc) => ({ id: doc.id, ...doc.data() }))
                   .filter((item) =>
-                    item.name.toLowerCase().includes(filter.toLowerCase()),
+                    item
+                      .data()
+                      .name.toLowerCase()
+                      .includes(filter.toLowerCase()),
                   )
+                  .sort(sortItems)
                   .map((item) => (
                     <Item
                       key={item.id}
-                      id={doc.id}
-                      lastPurchasedDate={item.lastPurchasedDate}
-                      name={item.name}
+                      id={item.id}
+                      lastPurchasedDate={item.data().lastPurchasedDate}
+                      name={item.data().name}
                     />
                   ))
-              : value.docs.map((doc) => (
-                  <Item key={doc.id} {...doc.data()} id={doc.id} />
-                ))}
+              : value.docs
+                  .sort(sortItems)
+                  .map((doc) => (
+                    <Item key={doc.id} {...doc.data()} id={doc.id} />
+                  ))}
           </ul>
         </div>
       )}

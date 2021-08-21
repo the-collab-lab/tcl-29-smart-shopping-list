@@ -26,3 +26,19 @@
   border: solid 2px black;
   border-radius: 2px;
 }
+
+.soon {
+  color: #ad2d2d;
+}
+
+.kind-of-soon {
+  color: #f77903;
+}
+
+.not-so-soon {
+  color: #08640d;
+}
+
+.inactive {
+  color: lightgray;
+}
