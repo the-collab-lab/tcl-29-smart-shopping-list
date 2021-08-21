@@ -1,7 +1,6 @@
 import React from 'react';
 import db from '../lib/firebase';
 import calculateEstimate from '../lib/estimates';
-import './Item.css';
 
 const Item = ({
   name,
@@ -26,9 +25,8 @@ const Item = ({
   const calculateLatestInterval = () => {
     let currentDate = new Date().getTime();
 
-    let interval = Math.round(
-      (currentDate / 1000 - lastPurchasedDate.seconds) / oneDayInSeconds,
-    );
+    let interval =
+      (currentDate / 1000 - lastPurchasedDate.seconds) / oneDayInSeconds;
     return interval;
   };
 
