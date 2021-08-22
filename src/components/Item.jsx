@@ -61,6 +61,7 @@ const Item = ({
       console.error('Error removing document: ', error);
     }
   };
+
   const checkDate = (lastPurchasedDate) => {
     if (lastPurchasedDate === null) {
       return false;
