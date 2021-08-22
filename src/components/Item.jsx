@@ -52,25 +52,24 @@ const Item = ({
     return estimatedInterval;
   };
 
-  function handleClick(e) {
+  const handleClick = async (e) => {
     e.preventDefault();
     const confirmation = window.confirm(
       `Are you sure you want to delete ${name}?`,
     );
 
-    if (confirmation) {
-      db.collection('items')
-        .doc(id)
-        .delete()
-        .then(() => {
-          displayMessage(`${name} successfully deleted!`);
-        })
-        .catch((error) => {
-          displayMessage('AN ERROR OCCURRED. Please try again.');
-          console.error('Error removing document: ', error);
-        });
+    if (!confirmation) {
+      return;
     }
-  }
+
+    try {
+      await db.collection('items').doc(id).delete();
+      displayMessage(`${name} successfully deleted!`);
+    } catch (error) {
+      displayMessage('AN ERROR OCCURRED. Please try again.');
+      console.error('Error removing document: ', error);
+    }
+  };
 
   const checked = checkDate(lastPurchasedDate);
   const className = checked ? 'checked' : '';
