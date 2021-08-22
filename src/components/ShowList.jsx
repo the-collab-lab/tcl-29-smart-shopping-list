@@ -7,6 +7,7 @@ import './ShowList.css';
 
 function ShowList() {
   const [filter, setFilter] = useState('');
+  const [actionMessage, setActionMessage] = useState(null);
   const token = localStorage.getItem('token');
   const history = useHistory();
   const [value, loading, error] = useCollection(
@@ -47,6 +48,13 @@ function ShowList() {
     return item1.data().nextPurchase - item2.data().nextPurchase;
   };
 
+  const displayMessage = (message) => {
+    setActionMessage(message);
+    setTimeout(() => {
+      setActionMessage(null);
+    }, 8000);
+  };
+
   return (
     <div className="list-view">
       <h1>Smart Shopping List</h1>
@@ -78,6 +86,9 @@ function ShowList() {
               <i className="fas fa-times"></i>
             </button>
           )}
+          {actionMessage ? (
+            <p className="success-message">{actionMessage}</p>
+          ) : null}
           <ul>
             {filter
               ? value.docs
@@ -91,15 +102,22 @@ function ShowList() {
                   .map((item) => (
                     <Item
                       key={item.id}
+                      displayMessage={displayMessage}
+                      {...item.data()}
                       id={item.id}
-                      lastPurchasedDate={item.data().lastPurchasedDate}
-                      name={item.data().name}
+                      // lastPurchasedDate={item.data().lastPurchasedDate}
+                      // name={item.data().name}
                     />
                   ))
               : value.docs
                   .sort(sortItems)
                   .map((doc) => (
-                    <Item key={doc.id} {...doc.data()} id={doc.id} />
+                    <Item
+                      key={doc.id}
+                      displayMessage={displayMessage}
+                      {...doc.data()}
+                      id={doc.id}
+                    />
                   ))}
           </ul>
         </div>

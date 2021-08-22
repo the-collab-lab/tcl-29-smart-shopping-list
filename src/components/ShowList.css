@@ -13,6 +13,8 @@
 
 .check-item {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .check-item li {
   list-style: none;
@@ -41,4 +43,15 @@
 
 .inactive {
   color: lightgray;
+}
+
+.delete-button {
+  text-align: right;
+}
+
+.success-message {
+  display: block;
+  margin: 10px auto;
+  color: green;
+  font-weight: 600;
 }
