@@ -22,6 +22,13 @@ function ShowList() {
     setFilter(e.target.value);
   };
 
+  const displayMessage = (message) => {
+    setActionMessage(message);
+    setTimeout(() => {
+      setActionMessage(null);
+    }, 8000);
+  };
+
   return (
     <div className="list-view">
       <h1>Smart Shopping List</h1>
@@ -76,7 +83,7 @@ function ShowList() {
               : value.docs.map((doc) => (
                   <Item
                     key={doc.id}
-                    setActionMessage={setActionMessage}
+                    displayMessage={displayMessage}
                     {...doc.data()}
                     id={doc.id}
                   />
