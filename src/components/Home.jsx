@@ -56,6 +56,7 @@ const styles = {
     margin: '0 auto',
     fontSize: '24px',
     fontFamily: 'Jaldi, sans-serif',
+    fontWeight: 'bold',
     maxWidth: '280px',
     padding: '20px',
   },
@@ -149,7 +150,6 @@ const Home = () => {
         <h1 className="title">
           Welcome to <br /> Your Smart Shopping list!
         </h1>
-        {/* <button onClick={generateToken}>Create a new list</button> */}
         <Button
           onClick={generateToken}
           variant="contained"
@@ -165,15 +165,7 @@ const Home = () => {
           {notification ? (
             <div className="error-message">{notification}</div>
           ) : null}
-
           <form onSubmit={compareToken}>
-            {/* <input
-              className="input-box"
-              placeholder="three word token"
-              id="inputToken"
-              value={tokenName}
-              onChange={(e) => setTokenName(e.target.value)}
-            /> */}
             <TextField
               label="Enter Token"
               variant="outlined"
@@ -182,13 +174,6 @@ const Home = () => {
               value={tokenName}
               onChange={(e) => setTokenName(e.target.value)}
             />
-            {/* <button
-              type="submit"
-              className="submit-button"
-              disabled={tokenName.length === 0}
-            >
-              Join an existing list
-            </button> */}
             <Button
               type="submit"
               className="submit-button"
