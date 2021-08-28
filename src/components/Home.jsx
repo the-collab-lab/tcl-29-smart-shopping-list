@@ -3,7 +3,7 @@ import getToken from '../lib/tokens';
 import { useHistory } from 'react-router-dom';
 import db from '../lib/firebase';
 import firebase from 'firebase/app';
-import { Paper } from '@material-ui/core';
+import { Paper, Button } from '@material-ui/core';
 // import { Container } from '@material-ui/core';
 import Image from '../images/backround.png';
 import TopImage from '../images/Milky.png';
@@ -23,6 +23,13 @@ const styles = {
     backgroundSize: 'contain',
     height: '50%',
     width: '100%',
+  },
+  btn: {
+    backgroundColor: '#6C92E0',
+    borderRadius: '72px',
+    color: 'white',
+    fontSize: '24px',
+    fontFamily: 'Jaldi, sans-serif',
   },
 };
 
@@ -111,8 +118,14 @@ const Home = () => {
     <Paper style={styles.paperContainer}>
       <div style={styles.topImage} />
       <div className="home">
-        <h1>Welcome to your Smart Shopping list!</h1>
-        <button onClick={generateToken}>Create a new list</button>
+        <h1 className="title">
+          Welcome to <br /> Your Smart Shopping list!
+        </h1>
+        {/* <button onClick={generateToken}>Create a new list</button> */}
+        <Button onClick={generateToken} variant="contained" style={styles.btn}>
+          <i className="fas fa-plus-circle"></i>
+          Create a new list
+        </Button>
         <p> - or - </p>
         <p>Join an existing shopping list by entering a three word token.</p>
 

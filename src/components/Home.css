@@ -30,3 +30,11 @@
   margin-bottom: 10px;
   padding: 5px;
 }
+.title {
+  color: #e93b81;
+  font-family: 'Capriola', sans-serif;
+  font-size: 36px;
+}
+.fa-plus-circle {
+  padding-right: 4px;
+}
