@@ -3,8 +3,17 @@ import getToken from '../lib/tokens';
 import { useHistory } from 'react-router-dom';
 import db from '../lib/firebase';
 import firebase from 'firebase/app';
-
+import { Paper } from '@material-ui/core';
+import Image from '../images/backround.png';
 import './Home.css';
+
+const styles = {
+  paperContainer: {
+    backgroundImage: `url(${Image})`,
+    height: '100%',
+    backgroundColor: '#FFE5E2',
+  },
+};
 
 const Home = () => {
   let history = useHistory();
@@ -88,36 +97,38 @@ const Home = () => {
   };
 
   return (
-    <div className="home">
-      <h1>Welcome to your Smart Shopping list!</h1>
-      <button onClick={generateToken}>Create a new list</button>
-      <p> - or - </p>
-      <p>Join an existing shopping list by entering a three word token.</p>
+    <Paper style={styles.paperContainer}>
+      <div className="home">
+        <h1>Welcome to your Smart Shopping list!</h1>
+        <button onClick={generateToken}>Create a new list</button>
+        <p> - or - </p>
+        <p>Join an existing shopping list by entering a three word token.</p>
 
-      {notification ? (
-        <div className="error-message">{notification}</div>
-      ) : null}
+        {notification ? (
+          <div className="error-message">{notification}</div>
+        ) : null}
 
-      <form onSubmit={compareToken}>
-        <label htmlFor="inputToken" className="share-token">
-          Share token
-        </label>
-        <input
-          className="input-box"
-          placeholder="three word token"
-          id="inputToken"
-          value={tokenName}
-          onChange={(e) => setTokenName(e.target.value)}
-        />
-        <button
-          type="submit"
-          className="submit-button"
-          disabled={tokenName.length === 0}
-        >
-          Join an existing list
-        </button>
-      </form>
-    </div>
+        <form onSubmit={compareToken}>
+          <label htmlFor="inputToken" className="share-token">
+            Share token
+          </label>
+          <input
+            className="input-box"
+            placeholder="three word token"
+            id="inputToken"
+            value={tokenName}
+            onChange={(e) => setTokenName(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="submit-button"
+            disabled={tokenName.length === 0}
+          >
+            Join an existing list
+          </button>
+        </form>
+      </div>
+    </Paper>
   );
 };
 
