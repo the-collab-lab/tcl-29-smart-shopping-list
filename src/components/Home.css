@@ -1,10 +1,13 @@
+h1 {
+  margin-top: 0;
+  margin-bottom: 32px;
+}
+
 .home {
   text-align: center;
   margin: 0 auto;
   display: block;
-  position: absolute;
-  top: 30%;
-  left: 30%;
+  grid-area: main;
 }
 
 .share-token {
