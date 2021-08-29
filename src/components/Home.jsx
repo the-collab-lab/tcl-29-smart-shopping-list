@@ -7,6 +7,7 @@ import { Paper, Button, Card, TextField } from '@material-ui/core';
 import Image from '../images/backround.png';
 import TopImage from '../images/milky_top.png';
 import BottomImage from '../images/milky_bottom.png';
+import logo from '../images/logo.png';
 import './Home.css';
 
 const styles = {
@@ -59,6 +60,7 @@ const styles = {
     fontWeight: 'bold',
     maxWidth: '280px',
     padding: '20px',
+    lineHeight: 1.2,
   },
 };
 
@@ -147,6 +149,7 @@ const Home = () => {
     <Paper style={styles.paperContainer}>
       <div style={styles.topImage} />
       <div className="home">
+        <img src={logo} alt="logo" className="logo" />
         <h1 className="title">
           Welcome to <br /> Your Smart Shopping list!
         </h1>
