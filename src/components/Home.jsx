@@ -190,7 +190,7 @@ const Home = () => {
           </form>
         </Card>
       </div>
-      <div style={styles.bottomImage} />
+      <div style={styles.bottomImage} className="bottom" />
     </Paper>
   );
 };
