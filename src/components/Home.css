@@ -27,11 +27,12 @@ h1 {
 }
 
 .error-message {
-  color: red;
-  border: 1px solid red;
+  color: #e93b81;
+  border: 1px solid #e93b81;
   display: inline-block;
   margin-bottom: 10px;
   padding: 5px;
+  font-size: 17px;
 }
 .title {
   color: #e93b81;
@@ -46,7 +47,7 @@ h1 {
   width: 3%;
   border-radius: 50%;
   padding: 9px 15px;
-  background-color: #e93b81;
+
   margin-bottom: 20px;
 }
 
