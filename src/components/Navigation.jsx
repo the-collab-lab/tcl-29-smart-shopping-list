@@ -17,6 +17,11 @@ const Navigation = () => {
             Add Item
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/share-view" activeClassName="active">
+            Share
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
