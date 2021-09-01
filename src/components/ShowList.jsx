@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import db from '../lib/firebase';
 import { useHistory } from 'react-router-dom';
-import { Card } from '@material-ui/core';
+import { Card, TextField } from '@material-ui/core';
 import TopImage from '../images/milky_top.png';
 import Item from './Item';
 import './ShowList.css';
@@ -80,7 +80,7 @@ function ShowList() {
     <Card style={styles.paperContainer}>
       <div style={styles.topImage} />
       <div className="list-view">
-        <h1>Smart Shopping List</h1>
+        <h1 className="shopingList">MY SHOPPING LIST</h1>
         {error && <p>Error</p>}
         {loading ? (
           <p>Loading..</p>
@@ -94,9 +94,10 @@ function ShowList() {
         )}
         {value && value.docs.length > 0 && (
           <div>
-            <input
-              type="text"
-              placeholder="Filter items..."
+            <TextField
+              id="outlined-basic"
+              label="Filter items..."
+              variant="outlined"
               value={filter}
               onChange={handleChange}
             />

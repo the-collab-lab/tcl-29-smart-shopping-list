@@ -2,7 +2,6 @@
   text-align: center;
   margin: 0 auto;
   display: block;
-  background-color: red;
 }
 
 .list-view ul {
@@ -28,6 +27,11 @@
 .clear-button:hover {
   border: solid 2px black;
   border-radius: 2px;
+}
+.clear-button {
+  background-color: white;
+  border: none;
+  outline: none;
 }
 
 .soon {
@@ -55,4 +59,7 @@
   margin: 10px auto;
   color: green;
   font-weight: 600;
+}
+.shopingList {
+  font-family: jaldi, sans-serif;
 }
