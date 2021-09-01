@@ -3,8 +3,66 @@ import getToken from '../lib/tokens';
 import { useHistory } from 'react-router-dom';
 import db from '../lib/firebase';
 import firebase from 'firebase/app';
-
+import { Paper, Button, Card, TextField } from '@material-ui/core';
+import Image from '../images/backround.png';
+import TopImage from '../images/milky_top.png';
+import BottomImage from '../images/milky_bottom.png';
+import logo from '../images/logo.png';
 import './Home.css';
+
+const styles = {
+  paperContainer: {
+    backgroundImage: `url(${Image})`,
+    backgroundColor: '#FFE5E2',
+    backgroundSize: '100% 100%',
+  },
+  topImage: {
+    backgroundImage: `url(${TopImage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100% 100%',
+    gridArea: 'header',
+    height: '20vh',
+    width: '100%',
+  },
+  bottomImage: {
+    backgroundImage: `url(${BottomImage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100% 100%',
+    gridArea: 'footer',
+    height: '10vh',
+    width: '100%',
+  },
+  btnNewList: {
+    backgroundColor: '#6C92E0',
+    borderRadius: '72px',
+    color: 'white',
+    fontSize: '24px',
+    fontFamily: 'Jaldi, sans-serif',
+    marginBottom: '24px',
+  },
+  btnJoin: {
+    backgroundColor: 'white',
+    border: 'solid 2px #6C92E0',
+    borderRadius: '72px',
+    color: '#6C92E0',
+    fontSize: '24px',
+    fontFamily: 'Jaldi, sans-serif',
+    marginTop: '24px',
+  },
+  card: {
+    backgroundColor: 'white',
+    borderRadius: '45px',
+    color: '#6C92E0',
+    display: 'block',
+    margin: '0 auto',
+    fontSize: '24px',
+    fontFamily: 'Jaldi, sans-serif',
+    fontWeight: 'bold',
+    maxWidth: '280px',
+    padding: '20px',
+    lineHeight: 1.2,
+  },
+};
 
 const Home = () => {
   let history = useHistory();
@@ -88,36 +146,52 @@ const Home = () => {
   };
 
   return (
-    <div className="home">
-      <h1>Welcome to your Smart Shopping list!</h1>
-      <button onClick={generateToken}>Create a new list</button>
-      <p> - or - </p>
-      <p>Join an existing shopping list by entering a three word token.</p>
-
-      {notification ? (
-        <div className="error-message">{notification}</div>
-      ) : null}
-
-      <form onSubmit={compareToken}>
-        <label htmlFor="inputToken" className="share-token">
-          Share token
-        </label>
-        <input
-          className="input-box"
-          placeholder="three word token"
-          id="inputToken"
-          value={tokenName}
-          onChange={(e) => setTokenName(e.target.value)}
-        />
-        <button
-          type="submit"
-          className="submit-button"
-          disabled={tokenName.length === 0}
+    <Paper style={styles.paperContainer}>
+      <div style={styles.topImage} />
+      <div className="home">
+        <img src={logo} alt="logo" className="logo" />
+        <h1 className="title">
+          Welcome to <br /> Your Smart Shopping list!
+        </h1>
+        <Button
+          onClick={generateToken}
+          variant="contained"
+          style={styles.btnNewList}
         >
-          Join an existing list
-        </button>
-      </form>
-    </div>
+          <i className="fas fa-plus-circle"></i>
+          Create a new list
+        </Button>
+        <Card style={styles.card}>
+          <p> - OR - </p>
+          <p>Join an existing shopping list by entering a three word token.</p>
+
+          {notification ? (
+            <div className="error-message">{notification}</div>
+          ) : null}
+          <form onSubmit={compareToken}>
+            <TextField
+              label="Enter Token"
+              variant="outlined"
+              className="input-box"
+              id="inputToken"
+              value={tokenName}
+              onChange={(e) => setTokenName(e.target.value)}
+            />
+            <Button
+              type="submit"
+              className="submit-button"
+              disabled={tokenName.length === 0}
+              variant="contained"
+              style={styles.btnJoin}
+            >
+              <i className="fas fa-plus-circle"></i>
+              Join existing list
+            </Button>
+          </form>
+        </Card>
+      </div>
+      <div style={styles.bottomImage} className="bottom" />
+    </Paper>
   );
 };
 
