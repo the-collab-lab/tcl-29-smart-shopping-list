@@ -2,9 +2,20 @@ import React, { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import db from '../lib/firebase';
 import { useHistory } from 'react-router-dom';
+import { Paper } from '@material-ui/core';
 import Item from './Item';
 import './ShowList.css';
 
+const styles = {
+  paperContainer: {
+    backgroundColor: '#FAFAFA',
+    padding: '10% 20%',
+    borderRadius: '10px',
+    position: 'absolute',
+    top: '15%',
+    left: '25%',
+  },
+};
 function ShowList() {
   const [filter, setFilter] = useState('');
   const [actionMessage, setActionMessage] = useState(null);
@@ -56,73 +67,75 @@ function ShowList() {
   };
 
   return (
-    <div className="list-view">
-      <h1>Smart Shopping List</h1>
-      {error && <p>Error</p>}
-      {loading ? (
-        <p>Loading..</p>
-      ) : (
-        value.docs.length === 0 && (
+    <Paper style={styles.paperContainer}>
+      <div className="list-view">
+        <h1>Smart Shopping List</h1>
+        {error && <p>Error</p>}
+        {loading ? (
+          <p>Loading..</p>
+        ) : (
+          value.docs.length === 0 && (
+            <div>
+              <p>Your shopping list is currently empty</p>
+              <button onClick={handleClick}>Add item</button>
+            </div>
+          )
+        )}
+        {value && value.docs.length > 0 && (
           <div>
-            <p>Your shopping list is currently empty</p>
-            <button onClick={handleClick}>Add item</button>
+            <input
+              type="text"
+              placeholder="Filter items..."
+              value={filter}
+              onChange={handleChange}
+            />
+            {filter && (
+              <button
+                onClick={() => setFilter('')}
+                aria-label="clear filter text"
+                className="clear-button"
+              >
+                <i className="fas fa-times"></i>
+              </button>
+            )}
+            {actionMessage ? (
+              <p className="success-message">{actionMessage}</p>
+            ) : null}
+            <ul>
+              {filter
+                ? value.docs
+                    .filter((item) =>
+                      item
+                        .data()
+                        .name.toLowerCase()
+                        .includes(filter.toLowerCase()),
+                    )
+                    .sort(sortItems)
+                    .map((item) => (
+                      <Item
+                        key={item.id}
+                        displayMessage={displayMessage}
+                        {...item.data()}
+                        id={item.id}
+                        // lastPurchasedDate={item.data().lastPurchasedDate}
+                        // name={item.data().name}
+                      />
+                    ))
+                : value.docs
+                    .sort(sortItems)
+                    .map((doc) => (
+                      <Item
+                        key={doc.id}
+                        displayMessage={displayMessage}
+                        {...doc.data()}
+                        id={doc.id}
+                      />
+                    ))}
+            </ul>
           </div>
-        )
-      )}
-      {value && value.docs.length > 0 && (
-        <div>
-          <input
-            type="text"
-            placeholder="Filter items..."
-            value={filter}
-            onChange={handleChange}
-          />
-          {filter && (
-            <button
-              onClick={() => setFilter('')}
-              aria-label="clear filter text"
-              className="clear-button"
-            >
-              <i className="fas fa-times"></i>
-            </button>
-          )}
-          {actionMessage ? (
-            <p className="success-message">{actionMessage}</p>
-          ) : null}
-          <ul>
-            {filter
-              ? value.docs
-                  .filter((item) =>
-                    item
-                      .data()
-                      .name.toLowerCase()
-                      .includes(filter.toLowerCase()),
-                  )
-                  .sort(sortItems)
-                  .map((item) => (
-                    <Item
-                      key={item.id}
-                      displayMessage={displayMessage}
-                      {...item.data()}
-                      id={item.id}
-                      // lastPurchasedDate={item.data().lastPurchasedDate}
-                      // name={item.data().name}
-                    />
-                  ))
-              : value.docs
-                  .sort(sortItems)
-                  .map((doc) => (
-                    <Item
-                      key={doc.id}
-                      displayMessage={displayMessage}
-                      {...doc.data()}
-                      id={doc.id}
-                    />
-                  ))}
-          </ul>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </Paper>
   );
 }
 
