@@ -2,18 +2,28 @@ import React, { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import db from '../lib/firebase';
 import { useHistory } from 'react-router-dom';
-import { Paper } from '@material-ui/core';
+import { Card } from '@material-ui/core';
+import TopImage from '../images/milky_top.png';
 import Item from './Item';
 import './ShowList.css';
 
 const styles = {
   paperContainer: {
     backgroundColor: '#FAFAFA',
-    padding: '10% 20%',
-    borderRadius: '10px',
+    borderRadius: '20px',
     position: 'absolute',
     top: '15%',
-    left: '25%',
+    left: '21%',
+    width: '55%',
+    height: '70%',
+  },
+  topImage: {
+    backgroundImage: `url(${TopImage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100% 100%',
+    gridArea: 'header',
+    height: '20vh',
+    width: '100%',
   },
 };
 function ShowList() {
@@ -67,7 +77,8 @@ function ShowList() {
   };
 
   return (
-    <Paper style={styles.paperContainer}>
+    <Card style={styles.paperContainer}>
+      <div style={styles.topImage} />
       <div className="list-view">
         <h1>Smart Shopping List</h1>
         {error && <p>Error</p>}
@@ -135,7 +146,7 @@ function ShowList() {
           </div>
         )}
       </div>
-    </Paper>
+    </Card>
   );
 }
 
