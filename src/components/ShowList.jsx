@@ -102,13 +102,20 @@ function ShowList() {
               onChange={handleChange}
             />
             {filter && (
-              <button
+              // <button
+              //   onClick={() => setFilter('')}
+              //   aria-label="clear filter text"
+              //   className="clear-button"
+              // >
+              // </button>
+              <span
                 onClick={() => setFilter('')}
+                aria-hidden="true"
                 aria-label="clear filter text"
                 className="clear-button"
               >
                 <i className="fas fa-times"></i>
-              </button>
+              </span>
             )}
             {actionMessage ? (
               <p className="success-message">{actionMessage}</p>

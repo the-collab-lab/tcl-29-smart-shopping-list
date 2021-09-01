@@ -108,14 +108,13 @@ const Item = ({
       aria-label={setARIA(groupItemClassName())}
     >
       <div className="product-name">
-        <input type="checkbox" onChange={checkHandler} checked={checked} />
-        <TextField id="outlined-basic" value={name} variant="outlined" />
-      </div>
-
-      <div>
-        <button className="delete-button" onClick={handleClick}>
-          delete
-        </button>
+        <div className="product">
+          <input type="checkbox" onChange={checkHandler} checked={checked} />
+          <TextField id="outlined-basic" value={name} variant="outlined" />
+        </div>
+        <span onClick={handleClick} aria-hidden="true">
+          <i class="fas fa-trash-alt"></i>
+        </span>
       </div>
     </li>
   );
