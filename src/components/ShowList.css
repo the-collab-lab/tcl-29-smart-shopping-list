@@ -62,4 +62,8 @@
 }
 .shopingList {
   font-family: jaldi, sans-serif;
+  font-size: 40px;
+}
+.product-name {
+  margin: auto;
 }

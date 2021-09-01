@@ -93,7 +93,7 @@ function ShowList() {
           )
         )}
         {value && value.docs.length > 0 && (
-          <div>
+          <div className="inputs">
             <TextField
               id="outlined-basic"
               label="Filter items..."

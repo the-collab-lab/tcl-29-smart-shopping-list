@@ -1,6 +1,7 @@
 import React from 'react';
 import db from '../lib/firebase';
 import calculateEstimate from '../lib/estimates';
+import { TextField } from '@material-ui/core';
 
 const Item = ({
   displayMessage,
@@ -106,9 +107,9 @@ const Item = ({
       )}
       aria-label={setARIA(groupItemClassName())}
     >
-      <div>
+      <div className="product-name">
         <input type="checkbox" onChange={checkHandler} checked={checked} />
-        {name}
+        <TextField id="outlined-basic" value={name} variant="outlined" />
       </div>
 
       <div>
