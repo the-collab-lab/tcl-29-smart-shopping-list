@@ -1,22 +1,17 @@
 import React from 'react';
 import db from '../lib/firebase';
 import calculateEstimate from '../lib/estimates';
-import {
-  TextField,
-  Checkbox,
-  createTheme,
-  ThemeProvider,
-} from '@material-ui/core';
-import { green } from '@material-ui/core/colors';
+import { FormControlLabel, Checkbox } from '@material-ui/core';
+import { createTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
-const innerTheme = createTheme({
+const theme = createTheme({
   palette: {
     secondary: {
-      main: green[500],
+      main: '#11cb5f',
     },
   },
 });
-
 const Item = ({
   displayMessage,
   name,
@@ -63,6 +58,7 @@ const Item = ({
     const confirmation = window.confirm(
       `Are you sure you want to delete ${name}?`,
     );
+
     if (!confirmation) {
       return;
     }
@@ -122,11 +118,20 @@ const Item = ({
     >
       <div className="product-name">
         <div className="product">
-          {/* <input type="checkbox" onChange={checkHandler} checked={checked} /> */}
-          <ThemeProvider theme={innerTheme}>
-            <Checkbox onChange={checkHandler} checked={checked} />
-          </ThemeProvider>
-          <TextField id="outlined-basic" value={name} variant="outlined" />
+          <FormControlLabel
+            control={
+              <ThemeProvider theme={theme}>
+                <Checkbox
+                  checked={checked}
+                  onChange={checkHandler}
+                  color="secondary"
+                />
+              </ThemeProvider>
+            }
+            label={name}
+          />
+          {/* <input type="checkbox" onChange={checkHandler} checked={checked} />
+          <TextField id="outlined-basic" value={name} variant="outlined" /> */}
         </div>
         <span onClick={handleClick} aria-hidden="true">
           <i class="fas fa-trash-alt"></i>

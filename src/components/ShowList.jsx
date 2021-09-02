@@ -15,7 +15,6 @@ const styles = {
     top: '15%',
     left: '21%',
     width: '55%',
-    height: '70%',
   },
   topImage: {
     backgroundImage: `url(${TopImage})`,
@@ -77,7 +76,7 @@ function ShowList() {
   };
 
   return (
-    <Card style={styles.paperContainer}>
+    <Card style={styles.paperContainer} className="scroll">
       <div style={styles.topImage} />
       <div className="list-view">
         <h1 className="shopingList">MY SHOPPING LIST</h1>
@@ -120,7 +119,7 @@ function ShowList() {
             {actionMessage ? (
               <p className="success-message">{actionMessage}</p>
             ) : null}
-            <ul>
+            <ul className="list">
               {filter
                 ? value.docs
                     .filter((item) =>

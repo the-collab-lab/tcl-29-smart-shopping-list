@@ -3,13 +3,10 @@
   margin: 0 auto;
   display: block;
 }
-
-/* .list-view ul {
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-} */
+.list {
+  overflow-y: scroll;
+  height: 200px;
+}
 
 .check-item {
   display: flex;
@@ -51,6 +48,10 @@
 /* .delete-button {
   margin:auto;
 } */
+.MuiOutlinedInput-input {
+  padding: 10.5px 14px;
+  border-radius: 5px;
+}
 
 .success-message {
   display: block;
@@ -60,7 +61,8 @@
 }
 .shopingList {
   font-family: jaldi, sans-serif;
-  font-size: 40px;
+  font-size: 35px;
+  margin: 0;
 }
 .product-name {
   margin: auto;
@@ -68,8 +70,15 @@
 }
 
 .product {
-  /* border: 1px solid red;
-  margin:2px; */
-  /* border-radius: 10px;
-  padding: 2px 20px; */
+  border: 1px solid;
+  width: 15rem;
+  margin-bottom: 8px;
+  text-align: left;
+  padding-left: 3px;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+
+.product-name span {
+  align-self: center;
 }
