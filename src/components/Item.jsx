@@ -1,7 +1,21 @@
 import React from 'react';
 import db from '../lib/firebase';
 import calculateEstimate from '../lib/estimates';
-import { TextField } from '@material-ui/core';
+import {
+  TextField,
+  Checkbox,
+  createTheme,
+  ThemeProvider,
+} from '@material-ui/core';
+import { green } from '@material-ui/core/colors';
+
+const innerTheme = createTheme({
+  palette: {
+    secondary: {
+      main: green[500],
+    },
+  },
+});
 
 const Item = ({
   displayMessage,
@@ -49,7 +63,6 @@ const Item = ({
     const confirmation = window.confirm(
       `Are you sure you want to delete ${name}?`,
     );
-
     if (!confirmation) {
       return;
     }
@@ -109,7 +122,10 @@ const Item = ({
     >
       <div className="product-name">
         <div className="product">
-          <input type="checkbox" onChange={checkHandler} checked={checked} />
+          {/* <input type="checkbox" onChange={checkHandler} checked={checked} /> */}
+          <ThemeProvider theme={innerTheme}>
+            <Checkbox onChange={checkHandler} checked={checked} />
+          </ThemeProvider>
           <TextField id="outlined-basic" value={name} variant="outlined" />
         </div>
         <span onClick={handleClick} aria-hidden="true">
