@@ -13,18 +13,12 @@ const Navigation = () => {
             <i className="far fa-file-alt"></i>
             My List
           </Button>
-          {/* <NavLink to="/list-view" activeClassName="active">
-            List
-          </NavLink> */}
         </li>
         <li>
           <Button component={NavLink} to="/add-view" activeClassName="active">
             <i className="fas fa-plus-circle"></i>
             Add Item
           </Button>
-          {/* <NavLink to="/add-view" activeClassName="active">
-            Add Item
-          </NavLink> */}
         </li>
         <li>
           <Button component={NavLink} to="/list-view" activeClassName="active">

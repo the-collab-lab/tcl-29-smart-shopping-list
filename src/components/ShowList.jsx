@@ -110,7 +110,6 @@ function ShowList() {
                 Your shopping list is currently empty <br /> Add your first item
                 now
               </p>
-              {/* <button onClick={handleClick}>Add item</button> */}
               <Button
                 onClick={handleClick}
                 variant="contained"
@@ -159,8 +158,6 @@ function ShowList() {
                         displayMessage={displayMessage}
                         {...item.data()}
                         id={item.id}
-                        // lastPurchasedDate={item.data().lastPurchasedDate}
-                        // name={item.data().name}
                       />
                     ))
                 : value.docs
