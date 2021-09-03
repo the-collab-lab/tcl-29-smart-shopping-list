@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { Button, Card } from '@material-ui/core';
 import TopImage from '../images/milky_top.png';
 import EmptyListImg from '../images/empty_list.png';
+import logo from '../images/logo.png';
 import Item from './Item';
 import './ShowList.css';
 
@@ -14,7 +15,7 @@ const styles = {
     borderRadius: '20px',
     width: '55%',
     display: 'block',
-    margin: '120px auto 0  auto',
+    margin: '80px auto 0  auto',
   },
   topImage: {
     backgroundImage: `url(${TopImage})`,
@@ -97,7 +98,9 @@ function ShowList() {
 
   return (
     <Card style={styles.paperContainer}>
-      <div style={styles.topImage} />
+      <div style={styles.topImage}>
+        <img src={logo} alt="logo" className="logo" />
+      </div>
       <div className="list-view">
         <h1 className="shopingList">MY SHOPPING LIST</h1>
         {error && <p>Error</p>}
