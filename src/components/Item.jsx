@@ -130,11 +130,9 @@ const Item = ({
             }
             label={name}
           />
-          {/* <input type="checkbox" onChange={checkHandler} checked={checked} />
-          <TextField id="outlined-basic" value={name} variant="outlined" /> */}
         </div>
         <span onClick={handleClick} aria-hidden="true">
-          <i class="fas fa-trash-alt"></i>
+          <i className="fas fa-trash-alt"></i>
         </span>
       </div>
     </li>

@@ -92,30 +92,26 @@ function ShowList() {
           )
         )}
         {value && value.docs.length > 0 && (
-          <div className="inputs">
-            <TextField
-              id="outlined-basic"
-              label="Filter items..."
-              variant="outlined"
-              value={filter}
-              onChange={handleChange}
-            />
-            {filter && (
-              // <button
-              //   onClick={() => setFilter('')}
-              //   aria-label="clear filter text"
-              //   className="clear-button"
-              // >
-              // </button>
-              <span
-                onClick={() => setFilter('')}
-                aria-hidden="true"
-                aria-label="clear filter text"
-                className="clear-button"
-              >
-                <i className="fas fa-times"></i>
-              </span>
-            )}
+          <div>
+            <div className="filter-delete">
+              <TextField
+                id="outlined-basic"
+                label="Filter items..."
+                variant="outlined"
+                value={filter}
+                onChange={handleChange}
+              />
+              {filter && (
+                <span
+                  onClick={() => setFilter('')}
+                  aria-hidden="true"
+                  aria-label="clear filter text"
+                  className="clear-button"
+                >
+                  <i className="fas fa-times"></i>
+                </span>
+              )}
+            </div>
             {actionMessage ? (
               <p className="success-message">{actionMessage}</p>
             ) : null}
