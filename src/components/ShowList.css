@@ -42,7 +42,7 @@
 }
 
 .kind-of-soon {
-  color: #f77903;
+  color: #e93b81;
 }
 
 .not-so-soon {
@@ -73,9 +73,9 @@ input#outlined-basic {
   font-weight: 600;
 }
 .shopingList {
-  font-family: jaldi, sans-serif;
+  font-family: 'Capriola', sans-serif;
   font-size: 35px;
-  margin: 0;
+  margin: 5px;
 }
 .product-name {
   margin: auto;
@@ -90,6 +90,7 @@ input#outlined-basic {
   padding-left: 3px;
   border-radius: 15px;
   margin-right: 10px;
+  font-family: 'jaldi', sans-serif;
 }
 
 .product-name span {
