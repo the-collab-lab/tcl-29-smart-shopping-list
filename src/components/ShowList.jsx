@@ -10,11 +10,11 @@ import Item from './Item';
 import './ShowList.css';
 
 const styles = {
-  paperContainer: {
+  card: {
     backgroundColor: '#FAFAFA',
     borderRadius: '20px',
-    width: '55%',
-    display: 'block',
+    height: '100%',
+    width: '80%',
     margin: '80px auto 0  auto',
   },
   topImage: {
@@ -30,8 +30,8 @@ const styles = {
     backgroundRepeat: 'no-repeat',
     backgroundSize: '100% 100%',
     gridArea: 'footer',
-    height: '180px',
-    maxWidth: '200px',
+    height: '240px',
+    maxWidth: '280px',
     textAlign: 'center',
     margin: '0 auto',
     display: 'block',
@@ -97,7 +97,7 @@ function ShowList() {
   };
 
   return (
-    <Card style={styles.paperContainer}>
+    <Card style={styles.card}>
       <div style={styles.topImage}>
         <img src={logo} alt="logo" className="logo" />
       </div>
