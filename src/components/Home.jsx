@@ -33,7 +33,7 @@ const styles = {
     width: '100%',
   },
   btnNewList: {
-    backgroundColor: '#6C92E0',
+    backgroundColor: '#668AD4',
     borderRadius: '72px',
     color: 'white',
     fontSize: '24px',
@@ -42,9 +42,9 @@ const styles = {
   },
   btnJoin: {
     backgroundColor: 'white',
-    border: 'solid 2px #6C92E0',
+    border: 'solid 2px #668AD4',
     borderRadius: '72px',
-    color: '#6C92E0',
+    color: '#668AD4',
     fontSize: '24px',
     fontFamily: 'Jaldi, sans-serif',
     marginTop: '24px',
@@ -52,7 +52,7 @@ const styles = {
   card: {
     backgroundColor: 'white',
     borderRadius: '45px',
-    color: '#6C92E0',
+    color: '#668AD4',
     display: 'block',
     margin: '0 auto',
     fontSize: '24px',
