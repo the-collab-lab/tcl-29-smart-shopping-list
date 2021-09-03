@@ -26,7 +26,7 @@
   font-size: 24px;
   font-family: 'Jaldi', 'sans-serif';
   padding: 0 42px;
-  width: '240px';
+  width: 240px;
 }
 
 .navigation a:hover,
@@ -37,7 +37,7 @@ a:focus {
   font-size: 24px;
   font-family: 'Jaldi', 'sans-serif';
   padding: 0 42px;
-  width: '240px';
+  width: 240px;
 }
 
 .active {
@@ -47,6 +47,18 @@ a:focus {
   font-size: 24px;
   font-family: 'Jaldi', 'sans-serif';
   padding: 0 42px;
-  width: '240px';
+  width: 280px;
   font-weight: 800;
+}
+
+@media only screen and (max-width: 800px) {
+  .navigation a,
+  .navigation a:hover,
+  a:focus,
+  .active {
+    width: 84px;
+  }
+  .text {
+    display: none;
+  }
 }

@@ -13,8 +13,7 @@ const styles = {
   card: {
     backgroundColor: '#FAFAFA',
     borderRadius: '20px',
-    height: '100%',
-    width: '80%',
+    width: '75%',
     margin: '80px auto 0  auto',
   },
   topImage: {

@@ -11,19 +11,19 @@ const Navigation = () => {
         <li>
           <Button component={NavLink} to="/list-view" activeClassName="active">
             <i className="far fa-file-alt"></i>
-            My List
+            <span className="text">My List</span>
           </Button>
         </li>
         <li>
           <Button component={NavLink} to="/add-view" activeClassName="active">
             <i className="fas fa-plus-circle"></i>
-            Add Item
+            <span className="text">Add Item</span>
           </Button>
         </li>
         <li>
           <Button component={NavLink} to="/list-view" activeClassName="active">
             <i className="fas fa-paper-plane"></i>
-            Share List
+            <span className="text">Share List</span>
           </Button>
         </li>
       </ul>
