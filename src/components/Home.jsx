@@ -38,6 +38,7 @@ const styles = {
     color: 'white',
     fontSize: '24px',
     fontFamily: 'Jaldi, sans-serif',
+    textTransform: 'none',
     marginBottom: '24px',
   },
   btnJoin: {
@@ -47,6 +48,7 @@ const styles = {
     color: '#668AD4',
     fontSize: '24px',
     fontFamily: 'Jaldi, sans-serif',
+    textTransform: 'none',
     marginTop: '24px',
   },
   card: {
@@ -58,6 +60,7 @@ const styles = {
     fontSize: '24px',
     fontFamily: 'Jaldi, sans-serif',
     fontWeight: 'bold',
+    textTransform: 'none',
     maxWidth: '280px',
     padding: '20px',
     lineHeight: 1.2,

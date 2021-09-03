@@ -42,6 +42,7 @@ const styles = {
     color: 'white',
     fontSize: '24px',
     fontFamily: 'Jaldi, sans-serif',
+    textTransform: 'none',
     marginBottom: '24px',
   },
 };

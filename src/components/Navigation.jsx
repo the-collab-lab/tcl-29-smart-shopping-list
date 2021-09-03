@@ -24,10 +24,10 @@ const Navigation = () => {
             component={NavLink}
             to="/add-view"
             activeClassName="active"
-            aria-label="add item"
+            aria-label="add items"
           >
             <i className="fas fa-plus-circle"></i>
-            <span className="text">Add Item</span>
+            <span className="text">Add Items</span>
           </Button>
         </li>
         <li>

@@ -25,6 +25,7 @@
   color: #6c92e0;
   font-size: 24px;
   font-family: 'Jaldi', 'sans-serif';
+  text-transform: none;
   padding: 0 42px;
   width: 240px;
 }
@@ -36,6 +37,7 @@ a:focus {
   color: #fafafa;
   font-size: 24px;
   font-family: 'Jaldi', 'sans-serif';
+  text-transform: none;
   padding: 0 42px;
   width: 240px;
 }
@@ -46,6 +48,7 @@ a:focus {
   color: #fafafa;
   font-size: 24px;
   font-family: 'Jaldi', 'sans-serif';
+  text-transform: none;
   padding: 0 42px;
   width: 280px;
   font-weight: 800;
