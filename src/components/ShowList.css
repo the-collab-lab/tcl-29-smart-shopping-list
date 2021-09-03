@@ -5,7 +5,15 @@
 }
 .list {
   overflow-y: scroll;
-  height: 200px;
+  height: 230px;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}
+.list {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .check-item {
