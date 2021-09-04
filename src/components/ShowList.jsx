@@ -6,17 +6,10 @@ import { Card, TextField } from '@material-ui/core';
 import TopImage from '../images/milky_top.png';
 import Item from './Item';
 import logo from '../images/logo.png';
+// import BottomImage from '../images/milky_bottom.png';
 import './ShowList.css';
 
 const styles = {
-  paperContainer: {
-    backgroundColor: '#FAFAFA',
-    borderRadius: '20px',
-    position: 'absolute',
-    top: '15%',
-    left: '21%',
-    width: '55%',
-  },
   topImage: {
     backgroundImage: `url(${TopImage})`,
     backgroundRepeat: 'no-repeat',
@@ -77,7 +70,7 @@ function ShowList() {
   };
 
   return (
-    <Card style={styles.paperContainer} className="scroll">
+    <Card className="paper-container">
       <div style={styles.topImage} />
       <img src={logo} alt="logo" className="logo" />
       <div className="list-view">

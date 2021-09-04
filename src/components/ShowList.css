@@ -114,3 +114,39 @@ input#outlined-basic {
   left: 50%;
   top: 12%;
 }
+.paper-container {
+  background-color: #fafafa;
+  border-radius: 20px;
+  position: absolute;
+  top: 15%;
+  left: 21%;
+  width: 55%;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo {
+    width: 15%;
+  }
+  .bottom {
+    display: none;
+  }
+  .shopingList {
+    font-size: 20px;
+  }
+  input#outlined-basic {
+    width: 15rem;
+    height: 0.5rem;
+  }
+  .product {
+    width: 12rem;
+    margin: 2px;
+    padding: 0;
+  }
+  .list {
+    height: 200px;
+  }
+  .paper-container {
+    width: 90%;
+    left: 4.5%;
+  }
+}
