@@ -11,6 +11,13 @@
   flex-direction: column;
 }
 
+.logo {
+  background-color: #e93b81;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
+
 .check-item {
   display: flex;
   flex-direction: row;

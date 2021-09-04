@@ -5,6 +5,12 @@
   justify-content: flex-start;
 }
 
+.fa-plus-circle,
+.fa-file-alt,
+.fa-paper-plane {
+  padding: 8px;
+}
+
 form {
   margin-left: 10px;
 }
