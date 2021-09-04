@@ -1,7 +1,17 @@
 import React from 'react';
 import db from '../lib/firebase';
 import calculateEstimate from '../lib/estimates';
+import { FormControlLabel, Checkbox } from '@material-ui/core';
+import { createTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
+const theme = createTheme({
+  palette: {
+    secondary: {
+      main: '#11cb5f',
+    },
+  },
+});
 const Item = ({
   displayMessage,
   name,
@@ -106,15 +116,24 @@ const Item = ({
       )}
       aria-label={setARIA(groupItemClassName())}
     >
-      <div>
-        <input type="checkbox" onChange={checkHandler} checked={checked} />
-        {name}
-      </div>
-
-      <div>
-        <button className="delete-button" onClick={handleClick}>
-          delete
-        </button>
+      <div className="product-name">
+        <div className="product">
+          <FormControlLabel
+            control={
+              <ThemeProvider theme={theme}>
+                <Checkbox
+                  checked={checked}
+                  onChange={checkHandler}
+                  color="secondary"
+                />
+              </ThemeProvider>
+            }
+            label={name}
+          />
+        </div>
+        <span onClick={handleClick} aria-hidden="true">
+          <i className="fas fa-trash-alt"></i>
+        </span>
       </div>
     </li>
   );
