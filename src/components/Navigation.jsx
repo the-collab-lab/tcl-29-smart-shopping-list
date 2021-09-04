@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 import './Navigation.css';
 
@@ -8,14 +9,37 @@ const Navigation = () => {
     <div className="navigation">
       <ul>
         <li>
-          <NavLink to="/list-view" activeClassName="active">
-            List
-          </NavLink>
+          <Button
+            component={NavLink}
+            to="/list-view"
+            activeClassName="active"
+            aria-label="my list"
+          >
+            <i className="far fa-file-alt"></i>
+            <span className="text">My List</span>
+          </Button>
         </li>
         <li>
-          <NavLink to="/add-view" activeClassName="active">
-            Add Item
-          </NavLink>
+          <Button
+            component={NavLink}
+            to="/add-view"
+            activeClassName="active"
+            aria-label="add items"
+          >
+            <i className="fas fa-plus-circle"></i>
+            <span className="text">Add Items</span>
+          </Button>
+        </li>
+        <li>
+          <Button
+            component={NavLink}
+            to="/list-view"
+            activeClassName="active"
+            aria-label="share list"
+          >
+            <i className="fas fa-paper-plane"></i>
+            <span className="text">Share List</span>
+          </Button>
         </li>
       </ul>
     </div>
