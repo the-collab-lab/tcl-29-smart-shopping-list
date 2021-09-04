@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { Card, TextField } from '@material-ui/core';
 import TopImage from '../images/milky_top.png';
 import Item from './Item';
+import logo from '../images/logo.png';
 import './ShowList.css';
 
 const styles = {
@@ -78,6 +79,7 @@ function ShowList() {
   return (
     <Card style={styles.paperContainer} className="scroll">
       <div style={styles.topImage} />
+      <img src={logo} alt="logo" className="logo" />
       <div className="list-view">
         <h1 className="shopingList">MY SHOPPING LIST</h1>
         {error && <p>Error</p>}
