@@ -81,6 +81,7 @@ input#outlined-basic {
   color: green;
   font-weight: 600;
 }
+
 .shopingList {
   font-family: 'Capriola', sans-serif;
   font-size: 35px;
@@ -126,6 +127,7 @@ input#outlined-basic {
   left: 50%;
   top: 12%;
 }
+
 .paper-container {
   background-color: #fafafa;
   border-radius: 20px;

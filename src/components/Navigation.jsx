@@ -33,7 +33,7 @@ const Navigation = () => {
         <li>
           <Button
             component={NavLink}
-            to="/list-view"
+            to="/share-view"
             activeClassName="active"
             aria-label="share list"
           >

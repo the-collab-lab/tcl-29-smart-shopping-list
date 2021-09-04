@@ -3,6 +3,7 @@ import CreateItem from './components/CreateItem';
 import ShowList from './components/ShowList';
 import Home from './components/Home';
 import Navigation from './components/Navigation';
+import ShareList from './components/ShareList';
 import { Paper } from '@material-ui/core';
 import Image from './images/backround.png';
 import './App.css';
@@ -38,6 +39,10 @@ const App = () => {
             </Route>
             <Route path="/add-view">
               <CreateItem />
+              <Navigation />
+            </Route>
+            <Route path="/share-view">
+              <ShareList />
               <Navigation />
             </Route>
           </Switch>
