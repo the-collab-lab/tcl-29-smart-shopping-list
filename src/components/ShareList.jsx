@@ -1,38 +1,56 @@
 import React from 'react';
 import { Card, Button } from '@material-ui/core';
+import { useTheme } from '@material-ui/core';
 import TopImage from '../images/milky_top.png';
 import './ShareList.css';
-
-const styles = {
-  paperContainer: {
-    backgroundColor: '#FAFAFA',
-    borderRadius: '20px',
-    position: 'absolute',
-    top: '15%',
-    left: '21%',
-    width: '55%',
-    height: '70%',
-  },
-  topImage: {
-    backgroundImage: `url(${TopImage})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '100% 100%',
-    gridArea: 'header',
-    height: '20vh',
-    width: '100%',
-  },
-  btnShare: {
-    backgroundColor: 'white',
-    border: 'solid 4px #6C92E0',
-    borderRadius: '72px',
-    color: '#6C92E0',
-    fontSize: '24px',
-    fontFamily: 'Jaldi, sans-serif',
-    marginTop: '24px',
-  },
-};
+import logo from '../images/logo.png';
 
 const ShareView = () => {
+  const theme = useTheme();
+
+  // const tokenFontSize = {
+  //   fontSize: '24px',
+  //   [theme.breakpoints.down(780)]: {
+  //     fontSize: '16px',
+  //   },
+  // };
+
+  const styles = {
+    paperContainer: {
+      backgroundColor: '#FAFAFA',
+      borderRadius: '20px',
+      position: 'absolute',
+      top: '15%',
+      left: '21%',
+      width: '55%',
+      height: '70%',
+    },
+    topImage: {
+      backgroundImage: `url(${TopImage})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
+      gridArea: 'header',
+      height: '20vh',
+      width: '100%',
+    },
+    btnShare: {
+      backgroundColor: 'white',
+      border: 'solid 4px #6C92E0',
+      borderRadius: '72px',
+      color: '#6C92E0',
+      fontSize: '24px',
+      fontFamily: 'Jaldi, sans-serif',
+      marginTop: '24px',
+    },
+    threeWordToken: {
+      backgroundColor: 'none',
+      border: 'solid 2px #E93B81',
+      borderRadius: '24px',
+      padding: '10px',
+      color: '#E93B81',
+    },
+  };
+
   const userToken = localStorage.getItem('token');
 
   const handleClick = () => {
@@ -42,18 +60,21 @@ const ShareView = () => {
   return (
     <Card style={styles.paperContainer}>
       <div style={styles.topImage}>
-        <div className="share-view">
-          <h1>Share Shopping List</h1>
-          <p>Copy the token below and share it with your shopping Buddies</p>
-          <div className="three-word-token">{userToken}</div>
-          <Button
-            onClick={handleClick}
-            variant="contained"
-            style={styles.btnShare}
-          >
-            Copy
-          </Button>
-        </div>
+        <img src={logo} alt="logo" className="logo" />
+      </div>
+      <div className="share-view">
+        <h1>Share Shopping List</h1>
+        <p>Copy the token below and share it with your shopping Buddies</p>
+        <Card style={styles.threeWordToken} className="three-word-token">
+          {userToken}
+        </Card>
+        <Button
+          onClick={handleClick}
+          variant="contained"
+          style={styles.btnShare}
+        >
+          Copy
+        </Button>
       </div>
     </Card>
   );
