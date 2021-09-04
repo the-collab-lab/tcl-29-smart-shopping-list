@@ -1,56 +1,44 @@
 import React from 'react';
 import { Card, Button } from '@material-ui/core';
-import { useTheme } from '@material-ui/core';
 import TopImage from '../images/milky_top.png';
 import './ShareList.css';
 import logo from '../images/logo.png';
 
+const styles = {
+  paperContainer: {
+    backgroundColor: '#FAFAFA',
+    borderRadius: '20px',
+    height: '100%',
+    width: '75%',
+    margin: '80px auto 0 auto',
+  },
+  topImage: {
+    backgroundImage: `url(${TopImage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100% 100%',
+    gridArea: 'header',
+    height: '20vh',
+    width: '100%',
+  },
+  btnShare: {
+    backgroundColor: 'white',
+    border: 'solid 4px #6C92E0',
+    borderRadius: '72px',
+    color: '#6C92E0',
+    fontSize: '24px',
+    fontFamily: 'Jaldi, sans-serif',
+    marginTop: '24px',
+  },
+  threeWordToken: {
+    backgroundColor: 'none',
+    border: 'solid 2px #E93B81',
+    borderRadius: '24px',
+    padding: '10px',
+    color: '#E93B81',
+  },
+};
+
 const ShareView = () => {
-  const theme = useTheme();
-
-  // const tokenFontSize = {
-  //   fontSize: '24px',
-  //   [theme.breakpoints.down(780)]: {
-  //     fontSize: '16px',
-  //   },
-  // };
-
-  const styles = {
-    paperContainer: {
-      backgroundColor: '#FAFAFA',
-      borderRadius: '20px',
-      position: 'absolute',
-      top: '15%',
-      left: '21%',
-      width: '55%',
-      height: '70%',
-    },
-    topImage: {
-      backgroundImage: `url(${TopImage})`,
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: '100% 100%',
-      gridArea: 'header',
-      height: '20vh',
-      width: '100%',
-    },
-    btnShare: {
-      backgroundColor: 'white',
-      border: 'solid 4px #6C92E0',
-      borderRadius: '72px',
-      color: '#6C92E0',
-      fontSize: '24px',
-      fontFamily: 'Jaldi, sans-serif',
-      marginTop: '24px',
-    },
-    threeWordToken: {
-      backgroundColor: 'none',
-      border: 'solid 2px #E93B81',
-      borderRadius: '24px',
-      padding: '10px',
-      color: '#E93B81',
-    },
-  };
-
   const userToken = localStorage.getItem('token');
 
   const handleClick = () => {
