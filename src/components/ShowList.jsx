@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import db from '../lib/firebase';
 import { useHistory } from 'react-router-dom';
-import { Button, Card } from '@material-ui/core';
+import { Button, Card, TextField } from '@material-ui/core';
 import TopImage from '../images/milky_top.png';
 import EmptyListImg from '../images/empty_list.png';
 import logo from '../images/logo.png';
 import Item from './Item';
+// import BottomImage from '../images/milky_bottom.png';
 import './ShowList.css';
 
 const styles = {
@@ -17,6 +18,7 @@ const styles = {
     width: '75%',
     margin: '80px auto 0  auto',
   },
+
   topImage: {
     backgroundImage: `url(${TopImage})`,
     backgroundRepeat: 'no-repeat',
@@ -98,9 +100,8 @@ function ShowList() {
 
   return (
     <Card style={styles.card}>
-      <div style={styles.topImage}>
-        <img src={logo} alt="logo" className="logo" />
-      </div>
+      <div style={styles.topImage} />
+      <img src={logo} alt="logo" className="logo" />
       <div className="list-view">
         <h1 className="shopingList">MY SHOPPING LIST</h1>
         {error && <p>Error</p>}
@@ -127,25 +128,29 @@ function ShowList() {
         )}
         {value && value.docs.length > 0 && (
           <div>
-            <input
-              type="text"
-              placeholder="Filter items..."
-              value={filter}
-              onChange={handleChange}
-            />
-            {filter && (
-              <button
-                onClick={() => setFilter('')}
-                aria-label="clear filter text"
-                className="clear-button"
-              >
-                <i className="fas fa-times"></i>
-              </button>
-            )}
+            <div className="filter-delete">
+              <TextField
+                id="outlined-basic"
+                label="Filter items..."
+                variant="outlined"
+                value={filter}
+                onChange={handleChange}
+              />
+              {filter && (
+                <span
+                  onClick={() => setFilter('')}
+                  aria-hidden="true"
+                  aria-label="clear filter text"
+                  className="clear-button"
+                >
+                  <i className="fas fa-times"></i>
+                </span>
+              )}
+            </div>
             {actionMessage ? (
               <p className="success-message">{actionMessage}</p>
             ) : null}
-            <ul>
+            <ul className="list">
               {filter
                 ? value.docs
                     .filter((item) =>
