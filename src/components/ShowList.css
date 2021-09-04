@@ -16,6 +16,13 @@
   -ms-overflow-style: none;
 }
 
+.logo {
+  background-color: #e93b81;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
+
 .check-item {
   display: flex;
   justify-content: space-between;
@@ -29,10 +36,12 @@
 
 .clear-button:focus,
 .clear-button:hover {
-  border: solid 2px black;
-  border-radius: 2px;
+  color: red;
+  opacity: 0.5;
 }
 .clear-button {
+  color: #668ad4;
+  opacity: 1;
   background-color: white;
   border: none;
   outline: none;
@@ -100,6 +109,9 @@ input#outlined-basic {
 .filter-delete {
   display: flex;
   justify-content: center;
+}
+.fa-times {
+  margin-left: 10px;
 }
 .clear-button {
   align-self: center;

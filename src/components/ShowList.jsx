@@ -2,14 +2,23 @@ import React, { useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import db from '../lib/firebase';
 import { useHistory } from 'react-router-dom';
-import { Card, TextField } from '@material-ui/core';
+import { Button, Card, TextField } from '@material-ui/core';
 import TopImage from '../images/milky_top.png';
-import Item from './Item';
+import EmptyListImg from '../images/empty_list.png';
 import logo from '../images/logo.png';
+import Item from './Item';
 // import BottomImage from '../images/milky_bottom.png';
 import './ShowList.css';
 
 const styles = {
+  card: {
+    backgroundColor: '#FAFAFA',
+    borderRadius: '20px',
+    height: '100%',
+    width: '75%',
+    margin: '80px auto 0  auto',
+  },
+
   topImage: {
     backgroundImage: `url(${TopImage})`,
     backgroundRepeat: 'no-repeat',
@@ -17,6 +26,26 @@ const styles = {
     gridArea: 'header',
     height: '20vh',
     width: '100%',
+  },
+  emptyListImg: {
+    backgroundImage: `url(${EmptyListImg})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100% 100%',
+    gridArea: 'footer',
+    height: '20vh',
+    maxWidth: '240px',
+    textAlign: 'center',
+    margin: '0 auto',
+    marginBottom: '28px',
+  },
+  btnNewList: {
+    backgroundColor: '#668AD4',
+    borderRadius: '72px',
+    color: 'white',
+    fontSize: '24px',
+    fontFamily: 'Jaldi, sans-serif',
+    textTransform: 'none',
+    marginBottom: '24px',
   },
 };
 function ShowList() {
@@ -70,7 +99,7 @@ function ShowList() {
   };
 
   return (
-    <Card className="paper-container">
+    <Card style={styles.card}>
       <div style={styles.topImage} />
       <img src={logo} alt="logo" className="logo" />
       <div className="list-view">
@@ -81,8 +110,19 @@ function ShowList() {
         ) : (
           value.docs.length === 0 && (
             <div>
-              <p>Your shopping list is currently empty</p>
-              <button onClick={handleClick}>Add item</button>
+              <p>
+                Your shopping list is currently empty <br /> Add your first item
+                now
+              </p>
+              <Button
+                onClick={handleClick}
+                variant="contained"
+                style={styles.btnNewList}
+                aria-label="Add new items"
+              >
+                <i className="fas fa-plus-circle"></i>
+              </Button>
+              <div style={styles.emptyListImg} />
             </div>
           )
         )}
@@ -126,8 +166,6 @@ function ShowList() {
                         displayMessage={displayMessage}
                         {...item.data()}
                         id={item.id}
-                        // lastPurchasedDate={item.data().lastPurchasedDate}
-                        // name={item.data().name}
                       />
                     ))
                 : value.docs

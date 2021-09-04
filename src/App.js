@@ -20,6 +20,7 @@ const styles = {
     backgroundSize: '100% 100%',
   },
 };
+
 const App = () => {
   const existingToken = localStorage.getItem('token');
 
