@@ -4,10 +4,9 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import './createItem.css';
 import { useHistory } from 'react-router-dom';
 import { validateToken } from '../lib/validateToken';
-import { Paper, Card } from '@material-ui/core';
+import { Card } from '@material-ui/core';
 import Image from '../images/backround.png';
 import TopImage from '../images/milky_top.png';
-import BottomImage from '../images/milky_bottom.png';
 import logo from '../images/logo.png';
 import './Home.css';
 
@@ -23,14 +22,6 @@ const styles = {
     backgroundSize: '100% 100%',
     gridArea: 'header',
     height: '20vh',
-    width: '100%',
-  },
-  bottomImage: {
-    backgroundImage: `url(${BottomImage})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '100% 100%',
-    gridArea: 'footer',
-    height: '10vh',
     width: '100%',
   },
   btnItemList: {
@@ -50,20 +41,6 @@ const styles = {
     fontFamily: 'Jaldi, sans-serif',
     marginTop: '24px',
   },
-  // card: {
-  //   backgroundColor: 'white',
-  //   borderRadius: '45px',
-  //   color: 'black',
-  //   display: 'block',
-  //   margin: '0 auto',
-  //   fontSize: '18px',
-  //   fontFamily: 'Jaldi, sans-serif',
-  //   maxWidth: '280px',
-  //   padding: '20px',
-  //   lineHeight: 1.2,
-
-  // },
-
   card: {
     backgroundColor: '#FAFAFA',
     borderRadius: '20px',
@@ -137,81 +114,78 @@ function CreateItem() {
   };
 
   return (
-    <Paper style={styles.paperContainer}>
-      <Card style={styles.card}>
-        <div style={styles.topImage} />
-        <div className="createItem">
-          <img src={logo} alt="logo" className="logo" />
-          <h1 className="title">Add a new item</h1>
-          {notifiction && (
-            <div className="errorMessage">The Item already exists </div>
-          )}
+    <Card style={styles.card}>
+      <div style={styles.topImage} />
+      <div className="createItem">
+        <img src={logo} alt="logo" className="logo" />
+        <h1 className="title">Add a new item</h1>
+        {notifiction && (
+          <div className="errorMessage">The Item already exists </div>
+        )}
 
-          <form onSubmit={handleSubmit}>
-            <div className="input-name">
-              <label htmlFor="item-name">Name:</label>
+        <form onSubmit={handleSubmit}>
+          <div className="input-name">
+            <label htmlFor="item-name">Name:</label>
+            <input
+              type="text"
+              variant="out-lined"
+              id="item-name"
+              className="input-box"
+              value={item.itemName}
+              name="itemName"
+              onChange={handleChange}
+            />
+          </div>
+          <fieldset className="radio-buttons">
+            <p className="how_soon">How soon will you buy this again?</p>
+            <div className="radio-btn-nextpurchase">
               <input
-                type="text"
-                variant="out-lined"
-                id="item-name"
-                className="input-box"
-                value={item.itemName}
-                name="itemName"
+                type="radio"
+                id="soon"
+                value={7}
+                name="nextPurchase"
                 onChange={handleChange}
+                checked={item.nextPurchase === '7'}
               />
+              <label htmlFor="soon">Soon</label>
             </div>
-            <fieldset className="radio-buttons">
-              <p className="how_soon">How soon will you buy this again?</p>
-              <div className="radio-btn-nextpurchase">
-                <input
-                  type="radio"
-                  id="soon"
-                  value={7}
-                  name="nextPurchase"
-                  onChange={handleChange}
-                  checked={item.nextPurchase === '7'}
-                />
-                <label htmlFor="soon">Soon</label>
-              </div>
 
-              <div>
-                <input
-                  type="radio"
-                  id="kind-of-soon"
-                  value={14}
-                  name="nextPurchase"
-                  onChange={handleChange}
-                  checked={item.nextPurchase === '14'}
-                />
-                <label htmlFor="kind-of-soon">Kind of soon</label>
-              </div>
+            <div>
+              <input
+                type="radio"
+                id="kind-of-soon"
+                value={14}
+                name="nextPurchase"
+                onChange={handleChange}
+                checked={item.nextPurchase === '14'}
+              />
+              <label htmlFor="kind-of-soon">Kind of soon</label>
+            </div>
 
-              <div>
-                <input
-                  type="radio"
-                  id="not-soon"
-                  value={30}
-                  name="nextPurchase"
-                  onChange={handleChange}
-                  checked={item.nextPurchase === '30'}
-                />
-                <label htmlFor="not-soon">Not soon</label>
-              </div>
-            </fieldset>
+            <div>
+              <input
+                type="radio"
+                id="not-soon"
+                value={30}
+                name="nextPurchase"
+                onChange={handleChange}
+                checked={item.nextPurchase === '30'}
+              />
+              <label htmlFor="not-soon">Not soon</label>
+            </div>
+          </fieldset>
 
-            <button
-              type="submit"
-              disabled={item.itemName.length === 0}
-              style={styles.btnAddSingleItem}
-            >
-              <i className="fas fa-plus-circle"></i>
-              Add item
-            </button>
-          </form>
-        </div>
-        <div style={styles.bottomImage} className="bottom" />
-      </Card>
-    </Paper>
+          <button
+            type="submit"
+            disabled={item.itemName.length === 0}
+            style={styles.btnAddSingleItem}
+          >
+            <i className="fas fa-plus-circle"></i>
+            Add item
+          </button>
+        </form>
+      </div>
+    </Card>
   );
 }
 
