@@ -1,0 +1,46 @@
+.share-view {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  font-family: 'Jaldi', 'sans-serif';
+}
+
+.share-view p {
+  margin: 2rem 0;
+}
+
+.three-word-token {
+  font-size: 24px;
+  margin: 0 30%;
+}
+
+@media only screen and (max-width: 800px) {
+  .three-word-token {
+    font-size: 16px;
+    margin: 0 10%;
+  }
+
+  .share-view p {
+    margin: 0 0 1rem;
+  }
+}
+
+.logo {
+  background-color: #e93b81;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  bottom: 12%;
+}
+@media only screen and (max-width: 600px) {
+  .logo {
+    width: 15%;
+  }
+  .bottom {
+    display: none;
+  }
+  .paper-container {
+    width: 90%;
+    left: 4.5%;
+  }
+}

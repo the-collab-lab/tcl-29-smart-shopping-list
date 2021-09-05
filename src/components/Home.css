@@ -27,19 +27,37 @@ h1 {
 }
 
 .error-message {
-  color: red;
-  border: 1px solid red;
+  color: #e93b81;
+  border: 1px solid #e93b81;
   display: inline-block;
   margin-bottom: 10px;
   padding: 5px;
+  font-size: 17px;
 }
 .title {
   color: #e93b81;
   font-family: 'Capriola', sans-serif;
   font-size: 36px;
 }
-.fa-plus-circle {
-  padding-right: 4px;
+
+.logo {
+  width: 3%;
+  border-radius: 50%;
+  padding: 9px 15px;
+  background-color: #e93b81;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo {
+    width: 15%;
+  }
+  .bottom {
+    display: none;
+  }
+  .home {
+    margin-bottom: 25px;
+  }
 }
 
 .logo {
