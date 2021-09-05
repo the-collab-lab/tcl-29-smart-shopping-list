@@ -4,7 +4,7 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import './createItem.css';
 import { useHistory } from 'react-router-dom';
 import { validateToken } from '../lib/validateToken';
-import { Paper, Button, Card, TextField } from '@material-ui/core';
+import { Paper, Card } from '@material-ui/core';
 import Image from '../images/backround.png';
 import TopImage from '../images/milky_top.png';
 import BottomImage from '../images/milky_bottom.png';
@@ -148,24 +148,20 @@ function CreateItem() {
           )}
 
           <form onSubmit={handleSubmit}>
-            <label htmlFor="item-name">Item name:</label>
-            {/* <input
-              type="text"
-              variant="out-lined"
-              id="item-name"
-              className="input-box"
-              value={item.itemName}
-              name="itemName"
-              onChange={handleChange}
-            /> */}
-            <TextField
-              id="outlined-basic"
-              variant="outlined"
-              value={item.itemName}
-              onChange={handleChange}
-            />
+            <div className="input-name">
+              <label htmlFor="item-name">Name:</label>
+              <input
+                type="text"
+                variant="out-lined"
+                id="item-name"
+                className="input-box"
+                value={item.itemName}
+                name="itemName"
+                onChange={handleChange}
+              />
+            </div>
             <fieldset className="radio-buttons">
-              <legend>How soon will you buy this again?</legend>
+              <p className="how_soon">How soon will you buy this again?</p>
               <div className="radio-btn-nextpurchase">
                 <input
                   type="radio"
