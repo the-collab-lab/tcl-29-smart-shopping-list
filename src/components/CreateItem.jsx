@@ -4,7 +4,7 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import './createItem.css';
 import { useHistory } from 'react-router-dom';
 import { validateToken } from '../lib/validateToken';
-import { Card } from '@material-ui/core';
+import { Card, Button } from '@material-ui/core';
 import TopImage from '../images/milky_top.png';
 import logo from '../images/logo.png';
 import './Home.css';
@@ -28,7 +28,7 @@ const styles = {
   },
   btnAddSingleItem: {
     backgroundColor: 'white',
-    border: 'solid 2px #6C92E0',
+    border: 'solid 4px #6C92E0',
     borderRadius: '72px',
     color: '#6C92E0',
     fontSize: '24px',
@@ -169,14 +169,15 @@ function CreateItem() {
             </div>
           </fieldset>
 
-          <button
+          <Button
             type="submit"
             disabled={item.itemName.length === 0}
+            variant="contained"
             style={styles.btnAddSingleItem}
           >
             <i className="fas fa-plus-circle"></i>
             Add item
-          </button>
+          </Button>
         </form>
       </div>
     </Card>
