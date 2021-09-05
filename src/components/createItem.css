@@ -29,7 +29,7 @@ input#item-name {
 }
 
 .title {
-  color: #e93b81;
+  color: #d13573;
   font-family: 'Capriola', sans-serif;
   font-size: 36px;
 }
@@ -41,7 +41,7 @@ input#item-name {
   width: 3%;
   border-radius: 50%;
   padding: 9px 15px;
-  background-color: #e93b81;
+  background-color: #d13573;
   margin-bottom: 20px;
 }
 .how_soon {

@@ -18,7 +18,7 @@
   text-decoration: none;
   background-color: #fafafa;
   border-radius: 72px;
-  color: #6c92e0;
+  color: #668ad4;
   font-size: 24px;
   font-family: 'Jaldi', 'sans-serif';
   text-transform: none;
@@ -28,7 +28,7 @@
 
 .navigation a:hover,
 a:focus {
-  background-color: #6c92e0;
+  background-color: #668ad4;
   border-radius: 72px;
   color: #fafafa;
   font-size: 24px;
@@ -39,7 +39,7 @@ a:focus {
 }
 
 .active {
-  background-color: #6c92e0;
+  background-color: #668ad4;
   border-radius: 72px;
   color: #fafafa;
   font-size: 24px;

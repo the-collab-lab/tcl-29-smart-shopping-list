@@ -19,7 +19,7 @@ const styles = {
     width: '100%',
   },
   btnItemList: {
-    backgroundColor: '#6C92E0',
+    backgroundColor: '#668AD4',
     borderRadius: '72px',
     color: 'white',
     fontSize: '24px',
@@ -28,9 +28,9 @@ const styles = {
   },
   btnAddSingleItem: {
     backgroundColor: 'white',
-    border: 'solid 4px #6C92E0',
+    border: 'solid 4px #668AD4',
     borderRadius: '72px',
-    color: '#6C92E0',
+    color: '#668AD4',
     fontSize: '24px',
     fontFamily: 'Jaldi, sans-serif',
     marginTop: '24px',

@@ -22,19 +22,19 @@ const styles = {
   },
   btnShare: {
     backgroundColor: 'white',
-    border: 'solid 4px #6C92E0',
+    border: 'solid 4px #668AD4',
     borderRadius: '72px',
-    color: '#6C92E0',
+    color: '#668AD4',
     fontSize: '24px',
     fontFamily: 'Jaldi, sans-serif',
     marginTop: '24px',
   },
   threeWordToken: {
     backgroundColor: 'none',
-    border: 'solid 2px #E93B81',
+    border: 'solid 2px #d13573',
     borderRadius: '24px',
     padding: '10px',
-    color: '#E93B81',
+    color: '#d13573',
   },
 };
 
