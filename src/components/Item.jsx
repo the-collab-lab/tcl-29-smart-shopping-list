@@ -117,7 +117,7 @@ const Item = ({
       aria-label={setARIA(groupItemClassName())}
     >
       <div className="product-name">
-        <div className="product">
+        <div className={[groupItemClassName(), 'product'].join(' ')}>
           <FormControlLabel
             control={
               <ThemeProvider theme={theme}>
