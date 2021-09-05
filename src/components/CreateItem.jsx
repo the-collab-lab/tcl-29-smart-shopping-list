@@ -5,17 +5,11 @@ import './createItem.css';
 import { useHistory } from 'react-router-dom';
 import { validateToken } from '../lib/validateToken';
 import { Card } from '@material-ui/core';
-import Image from '../images/backround.png';
 import TopImage from '../images/milky_top.png';
 import logo from '../images/logo.png';
 import './Home.css';
 
 const styles = {
-  paperContainer: {
-    backgroundImage: `url(${Image})`,
-    backgroundColor: '#FFE5E2',
-    backgroundSize: '100% 100%',
-  },
   topImage: {
     backgroundImage: `url(${TopImage})`,
     backgroundRepeat: 'no-repeat',
