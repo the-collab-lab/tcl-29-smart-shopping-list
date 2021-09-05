@@ -4,6 +4,51 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import './createItem.css';
 import { useHistory } from 'react-router-dom';
 import { validateToken } from '../lib/validateToken';
+import { Card } from '@material-ui/core';
+import Image from '../images/backround.png';
+import TopImage from '../images/milky_top.png';
+import logo from '../images/logo.png';
+import './Home.css';
+
+const styles = {
+  paperContainer: {
+    backgroundImage: `url(${Image})`,
+    backgroundColor: '#FFE5E2',
+    backgroundSize: '100% 100%',
+  },
+  topImage: {
+    backgroundImage: `url(${TopImage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100% 100%',
+    gridArea: 'header',
+    height: '20vh',
+    width: '100%',
+  },
+  btnItemList: {
+    backgroundColor: '#6C92E0',
+    borderRadius: '72px',
+    color: 'white',
+    fontSize: '24px',
+    fontFamily: 'Jaldi, sans-serif',
+    marginBottom: '24px',
+  },
+  btnAddSingleItem: {
+    backgroundColor: 'white',
+    border: 'solid 2px #6C92E0',
+    borderRadius: '72px',
+    color: '#6C92E0',
+    fontSize: '24px',
+    fontFamily: 'Jaldi, sans-serif',
+    marginTop: '24px',
+  },
+  card: {
+    backgroundColor: '#FAFAFA',
+    borderRadius: '20px',
+    height: '100%',
+    width: '75%',
+    margin: '80px auto 0  auto',
+  },
+};
 
 function CreateItem() {
   const history = useHistory();
@@ -69,64 +114,78 @@ function CreateItem() {
   };
 
   return (
-    <div>
-      <h1>AddView</h1>
-      {notifiction && (
-        <div className="errorMessage">The Item already exist </div>
-      )}
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="item-name">Item name:</label>
-        <input
-          type="text"
-          id="item-name"
-          value={item.itemName}
-          name="itemName"
-          onChange={handleChange}
-        />
-        <fieldset className="radio-buttons">
-          <legend>How soon will you buy this again?</legend>
-          <div>
-            <input
-              type="radio"
-              id="soon"
-              value={7}
-              name="nextPurchase"
-              onChange={handleChange}
-              checked={item.nextPurchase === '7'}
-            />
-            <label htmlFor="soon">Soon</label>
-          </div>
+    <Card style={styles.card}>
+      <div style={styles.topImage} />
+      <div className="createItem">
+        <img src={logo} alt="logo" className="logo" />
+        <h1 className="title">Add a new item</h1>
+        {notifiction && (
+          <div className="errorMessage">The Item already exists </div>
+        )}
 
-          <div>
+        <form onSubmit={handleSubmit}>
+          <div className="input-name">
+            <label htmlFor="item-name">Name:</label>
             <input
-              type="radio"
-              id="kind-of-soon"
-              value={14}
-              name="nextPurchase"
+              type="text"
+              variant="out-lined"
+              id="item-name"
+              className="input-box"
+              value={item.itemName}
+              name="itemName"
               onChange={handleChange}
-              checked={item.nextPurchase === '14'}
             />
-            <label htmlFor="kind-of-soon">Kind of soon</label>
           </div>
+          <fieldset className="radio-buttons">
+            <p className="how_soon">How soon will you buy this again?</p>
+            <div className="radio-btn-nextpurchase">
+              <input
+                type="radio"
+                id="soon"
+                value={7}
+                name="nextPurchase"
+                onChange={handleChange}
+                checked={item.nextPurchase === '7'}
+              />
+              <label htmlFor="soon">Soon</label>
+            </div>
 
-          <div>
-            <input
-              type="radio"
-              id="not-soon"
-              value={30}
-              name="nextPurchase"
-              onChange={handleChange}
-              checked={item.nextPurchase === '30'}
-            />
-            <label htmlFor="not-soon">Not soon</label>
-          </div>
-        </fieldset>
+            <div>
+              <input
+                type="radio"
+                id="kind-of-soon"
+                value={14}
+                name="nextPurchase"
+                onChange={handleChange}
+                checked={item.nextPurchase === '14'}
+              />
+              <label htmlFor="kind-of-soon">Kind of soon</label>
+            </div>
 
-        <button type="submit" disabled={item.itemName.length === 0}>
-          Add item
-        </button>
-      </form>
-    </div>
+            <div>
+              <input
+                type="radio"
+                id="not-soon"
+                value={30}
+                name="nextPurchase"
+                onChange={handleChange}
+                checked={item.nextPurchase === '30'}
+              />
+              <label htmlFor="not-soon">Not soon</label>
+            </div>
+          </fieldset>
+
+          <button
+            type="submit"
+            disabled={item.itemName.length === 0}
+            style={styles.btnAddSingleItem}
+          >
+            <i className="fas fa-plus-circle"></i>
+            Add item
+          </button>
+        </form>
+      </div>
+    </Card>
   );
 }
 
