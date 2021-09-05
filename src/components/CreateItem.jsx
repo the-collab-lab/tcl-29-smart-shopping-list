@@ -50,17 +50,26 @@ const styles = {
     fontFamily: 'Jaldi, sans-serif',
     marginTop: '24px',
   },
+  // card: {
+  //   backgroundColor: 'white',
+  //   borderRadius: '45px',
+  //   color: 'black',
+  //   display: 'block',
+  //   margin: '0 auto',
+  //   fontSize: '18px',
+  //   fontFamily: 'Jaldi, sans-serif',
+  //   maxWidth: '280px',
+  //   padding: '20px',
+  //   lineHeight: 1.2,
+
+  // },
+
   card: {
-    backgroundColor: 'white',
-    borderRadius: '45px',
-    color: 'black',
-    display: 'block',
-    margin: '0 auto',
-    fontSize: '18px',
-    fontFamily: 'Jaldi, sans-serif',
-    maxWidth: '280px',
-    padding: '20px',
-    lineHeight: 1.2,
+    backgroundColor: '#FAFAFA',
+    borderRadius: '20px',
+    height: '100%',
+    width: '75%',
+    margin: '80px auto 0  auto',
   },
 };
 
@@ -129,22 +138,30 @@ function CreateItem() {
 
   return (
     <Paper style={styles.paperContainer}>
-      <div className="createItem">
-        <img src={logo} alt="logo" className="logo" />
-        <h1 className="title">Add a new item</h1>
-        {notifiction && (
-          <div className="errorMessage">The Item already exists </div>
-        )}
-        <Card style={styles.card}>
+      <Card style={styles.card}>
+        <div style={styles.topImage} />
+        <div className="createItem">
+          <img src={logo} alt="logo" className="logo" />
+          <h1 className="title">Add a new item</h1>
+          {notifiction && (
+            <div className="errorMessage">The Item already exists </div>
+          )}
+
           <form onSubmit={handleSubmit}>
             <label htmlFor="item-name">Item name:</label>
-            <input
+            {/* <input
               type="text"
               variant="out-lined"
               id="item-name"
               className="input-box"
               value={item.itemName}
               name="itemName"
+              onChange={handleChange}
+            /> */}
+            <TextField
+              id="outlined-basic"
+              variant="outlined"
+              value={item.itemName}
               onChange={handleChange}
             />
             <fieldset className="radio-buttons">
@@ -195,9 +212,9 @@ function CreateItem() {
               Add item
             </button>
           </form>
-        </Card>
-      </div>
-      <div style={styles.bottomImage} className="bottom" />
+        </div>
+        <div style={styles.bottomImage} className="bottom" />
+      </Card>
     </Paper>
   );
 }

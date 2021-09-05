@@ -35,6 +35,15 @@
   margin-bottom: 20px;
 }
 
+.MuiOutlinedInput-input {
+  border-radius: 10px;
+}
+input#outlined-basic {
+  width: 15rem;
+  height: 1px;
+  border-radius: 10px;
+}
+
 @media only screen and (max-width: 600px) {
   .logo {
     width: 15%;
