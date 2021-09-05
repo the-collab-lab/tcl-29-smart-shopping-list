@@ -5,3 +5,44 @@
   margin-top: 10px;
   padding: 5px;
 }
+
+.createItem {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  grid-area: main;
+}
+
+.input-box {
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.title {
+  color: #e93b81;
+  font-family: 'Capriola', sans-serif;
+  font-size: 36px;
+}
+.fa-plus-circle {
+  padding-right: 4px;
+}
+
+.logo {
+  width: 3%;
+  border-radius: 50%;
+  padding: 9px 15px;
+  background-color: #e93b81;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo {
+    width: 15%;
+  }
+  .bottom {
+    display: none;
+  }
+  .home {
+    margin-bottom: 25px;
+  }
+}
