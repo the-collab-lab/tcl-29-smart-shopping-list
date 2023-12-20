@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import getToken from '../lib/tokens';
 import { useHistory } from 'react-router-dom';
 import db from '../lib/firebase';
-import firebase from 'firebase/app';
 import { Paper, Button, Card, TextField } from '@material-ui/core';
 import Image from '../images/backround.png';
 import TopImage from '../images/milky_top.png';
@@ -90,37 +88,38 @@ const Home = () => {
   }, [error]); // eslint-disable-line
 
   const generateToken = () => {
-    const token = getToken();
-    localStorage.setItem('token', token);
+    // const token = 'the collab lab';
+    // localStorage.setItem('token', token);
 
-    db.collection('tokens')
-      .doc('tokenDocument')
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          db.collection('tokens')
-            .doc('tokenDocument')
-            .update({
-              tokenArray: firebase.firestore.FieldValue.arrayUnion(token),
-            })
-            .catch((error) => {
-              console.log(error);
-              return;
-            });
-        } else {
-          db.collection('tokens')
-            .doc('tokenDocument')
-            .set({
-              tokenArray: [token],
-            })
-            .catch((error) => {
-              console.log(error);
-              return;
-            });
-        }
-      });
+    // db.collection('tokens')
+    //   .doc('tokenDocument')
+    //   .get()
+    //   .then((doc) => {
+    //     if (doc.exists) {
+    //       db.collection('tokens')
+    //         .doc('tokenDocument')
+    //         .update({
+    //           tokenArray: firebase.firestore.FieldValue.arrayUnion(token),
+    //         })
+    //         .catch((error) => {
+    //           console.log(error);
+    //           return;
+    //         });
+    //     } else {
+    //       db.collection('tokens')
+    //         .doc('tokenDocument')
+    //         .set({
+    //           tokenArray: [token],
+    //         })
+    //         .catch((error) => {
+    //           console.log(error);
+    //           return;
+    //         });
+    //     }
+    //   });
 
-    history.push('/list-view');
+    // history.push('/list-view');
+    console.log('Creating new lists is no longer supported');
   };
 
   const compareToken = (e) => {
@@ -147,6 +146,13 @@ const Home = () => {
         );
       });
   };
+
+  /** Using this alert instead of the ArchivalNoticeModal due to legacy deps */
+  useEffect(() => {
+    alert(
+      'This Smart Shopping List App was made by early-career developers at The Collab Lab. This project has now been archived. To view the demo shopping list, enter the three word token: the collab lab. The following features are no longer supported: creating new lists, adding & deleting items from the list, and marking items on the list as purchased.',
+    );
+  }, []);
 
   return (
     <Paper style={styles.paperContainer}>
